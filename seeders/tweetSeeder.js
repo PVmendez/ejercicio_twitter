@@ -9,22 +9,17 @@ module.exports = async () => {
 
 	for (let i = 0; i < 10; i++) {
 		const random = Math.floor(Math.random() * 10);
-		tweet.push(
+		tweets.push(
 			new Tweet({
-				content: faker.datatype.string(100),
+				content: faker.lorem.paragraph(),
 				date: faker.date.betweens(
 					"2011-01-01T00:00:00.000Z",
 					"2022-12-12T00:00:00.000Z"
 				),
-				firstName: faker.name.firstName(),
-				lastName: faker.name.lastName(),
-				userName: "firstName" + "lastName",
-				email: faker.internet.email,
-				description: faker.datatype.string(30),
-				profilePhoto: faker.internet.avatar,
+				likes: Math.floor(Math.random() * 10),
 			})
 		);
 	}
 
-	User.collection.insertMany(users);
+	Tweet.collection.insertMany(tweets);
 };

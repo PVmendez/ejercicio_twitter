@@ -13,13 +13,12 @@ module.exports = async () => {
 			new User({
 				firstName: faker.name.firstName(),
 				lastName: faker.name.lastName(),
-				userName: "firstName" + "lastName",
-				email: faker.internet.email,
-				description: faker.datatype.string(30),
-				profilePhoto: faker.internet.avatar,
+				userName: faker.internet.userName(),
+				email: faker.internet.email(),
+				description: faker.lorem.paragraph(),
+				profilePhoto: faker.internet.avatar(),
 			})
 		);
 	}
-
 	User.collection.insertMany(users);
 };

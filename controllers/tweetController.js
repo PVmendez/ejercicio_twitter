@@ -1,5 +1,3 @@
-const { Article } = require("../models");
-
 // Display a listing of the resource.
 async function index(req, res) {}
 
@@ -25,11 +23,11 @@ async function destroy(req, res) {}
 // ...
 
 module.exports = {
-  index,
-  show,
-  create,
-  store,
-  edit,
-  update,
-  destroy,
+	index,
+	show,
+	create,
+	store,
+	edit,
+	update,
+	destroy,
 };
