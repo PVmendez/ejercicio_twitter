@@ -10,8 +10,22 @@ const userSchema = new Schema({
 	description: String,
 	profilePhoto: String,
 	tweetList: [String],
-	followerList: [String],
-	followingList: [String],
+	followerList: [
+		{
+			id: {
+				type: mongoose.Schema.ObjectId,
+				ref: "User",
+			},
+		},
+	],
+	followingList: [
+		{
+			id: {
+				type: mongoose.Schema.ObjectId,
+				ref: "User",
+			},
+		},
+	],
 });
 
 module.exports = mongoose.model("User", userSchema);
