@@ -1,25 +1,17 @@
-module.exports = (sequelize, Model, DataTypes) => {
-  class User extends Model {}
+const mongoose = require("mongoose");
 
-  User.init(
-    {
-      id: {
-        type: DataTypes.BIGINT.UNSIGNED,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      firstname: {
-        type: DataTypes.STRING,
-      },
-      lastname: {
-        type: DataTypes.STRING,
-      },
-    },
-    {
-      sequelize,
-      modelName: "user",
-    },
-  );
+const Schema = mongoose.Schema;
 
-  return User;
-};
+const userSchema = new Schema({
+	firstName: String,
+	lastName: String,
+	userName: String,
+	email: String,
+	description: String,
+	profilePhoto: String,
+	tweetList: [String],
+	followerList: [String],
+	followingList: [String],
+});
+
+module.exports = mongoose.model("User", userSchema);
