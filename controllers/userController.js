@@ -1,11 +1,35 @@
-const { User } = require("../models");
+const { User, Tweet } = require("../models");
+const _ = require("lodash");
 
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  
+}
+
+async function showHome(req, res) {
+  let users = await User.find().limit(60);
+  users = _.sampleSize(users, 3);
+  const tweets = await Tweet.find({})
+    .sort("-createdAt")
+    .limit(20)
+    .populate({ path: "user", select: "firstName lastName userName profilePhoto" });
+  res.render("home", { tweets, users });
+}
 
 // Display the specified resource.
-async function show(req, res) {}
-
+async function show(req, res) {
+    const users = await User.find().limit(3);
+    const user = await User.findOne({ username: req.params.username }).populate({
+      path: "tweets",
+      populate: {
+        path: "user",
+      },
+    });
+    if (!user) {
+      return res.render("profilePage", { thisUser: user, users });
+    } 
+    return res.redirect("/home");
+}
 // Show the form for creating a new resource
 async function create(req, res) {}
 
@@ -26,6 +50,7 @@ async function destroy(req, res) {}
 
 module.exports = {
   index,
+  showHome,
   show,
   create,
   store,

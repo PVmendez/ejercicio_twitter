@@ -1,0 +1,49 @@
+main {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+#landingImage {
+  background-image: url("https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#landingImage svg {
+  max-width: 380px;
+  width: 70%;
+  fill: #fff;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+.signButtons {
+  max-width: 300px;
+}
+.signButtons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+footer {
+  background-color: rgb(230, 230, 230);
+  font-size: 0.7rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(58, 57, 57);
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: rgb(58, 57, 57);
+}

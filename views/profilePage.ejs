@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/meta") %>
+    <title>Home / Twitter</title>
+  </head>
+
+  <body>
+    <%- include("partials/createTweetModal") %>
+    <section class="d-flex justify-content-center container-fluid">
+      <!-- Sidebar -->
+      
+      <!-- Main -->
+      <main class="border p-0"><%- include("partials/profile") %></main>
+
+      <!-- Right Column -->
+      <%- include("partials/rightSidebar.ejs") %>
+    </section>
+    <%- include("partials/scripts") %>
+  </body>
+</html>

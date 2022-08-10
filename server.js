@@ -5,11 +5,15 @@ const routes = require("./routes");
 const dbInitialSetup = require("./dbInitialSetup");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
+const localVariable = require("./middlewares/localVariables");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
+app.use(localVariable);
 routes(app);
 
 dbInitialSetup(); // Crea tablas e inserta datos de prueba.
