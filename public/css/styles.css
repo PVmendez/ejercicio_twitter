@@ -1,1 +1,42 @@
 /* Colocar aquí CSS "propio" */
+.landing-bg {
+    background-image: url("../img/landingBg.png");
+}
+
+.btn {
+    width: 15rem!important;
+        border-radius: 2rem!important;
+}
+
+.divider {
+    margin-top: 5px;
+    width: 6.5rem;
+    height: 1px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: rgb(47, 51, 54);
+}
+
+.form-control.bg-black {
+    color: white !important;
+}
+
+#register2, #register1 {
+    display: none;
+}
+
+input[type=file] {
+  display: none;
+  }
+  
+.file-upload {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 360px;
+  background-color: rgb(56, 56, 56);
+  color: #fff;
+}
+
+.file-upload:hover {
+  background-color: rgb(29, 29, 29);
+}
