@@ -24,7 +24,7 @@ app.use(
 
 app.use(passport.session());
 
-passport.use(
+passport.use('login',
   new LocalStrategy(async function (username, password, done) {
     const user = await User.findOne({ userName: username});
 
@@ -37,6 +37,40 @@ passport.use(
     return done(null, user);
   })
 );
+
+passport.use('register', new LocalStrategy({
+        username : 'username',
+        email : 'email',
+        passReqToCallback : true 
+    },
+    function(req, username, email, done) {
+        User.findOne(
+          { $or: [{ userName: username }, { email: email }] },
+          function (err, user) {
+            if (err) return done(err);
+
+            if (user) {
+              return done(null, false, {
+                message: "Username or email is already taken.",
+              });
+            } else {
+          
+                const user = new User({
+                  userName: req.body.username,
+                  email: req.body.email,
+                  password: req.body.password,
+                  firstName: req.body.firstName,
+                  lastName: req.body.lastName,
+                  age: req.body.age,
+                  description: req.body.description,
+                });
+                user.save(user);
+                return done(null, user);
+            }
+          }
+        );
+    }
+));
 
 passport.serializeUser(function (user, done) {
   done(null, user._id);

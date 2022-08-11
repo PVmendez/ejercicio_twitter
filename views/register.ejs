@@ -10,14 +10,14 @@
   <body>
     <div class="landing-bg d-flex align-items-center vh-100">
         <div class="container w-50 rounded-3 bg-black p-5 shadow-lg">
-            <form id="regForm" action="/register" method="POST">
-                <div class="tab">
+            <form action="/register" method="POST">
+                <div>
                     <a class="text-decoration-none "href="/">Volver</a>
                     <h2 class="text-white ">Crea tu cuenta</h2>
                     <p class="text-primary">Paso 1 de 3 - Información de registro</p>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control bg-black" id="userName" name="userName" placeholder="name@example.com" required>
-                            <label class="text-white" for="userName">* Nombre de usuario</label>
+                            <input type="text" class="form-control bg-black" id="username" name="username" placeholder="name@example.com" required>
+                            <label class="text-white" for="username">* Nombre de usuario</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control bg-black" id="email" name="email" placeholder="name@example.com" required>
@@ -28,9 +28,7 @@
                             <label class="text-white" for="password">* Contraseña</label>
                         </div>
                 </div>
-                <div class="tab">
-                    <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
-                    <h2 class="text-white">Crea tu cuenta</h2>
+                <div>
                     <p class="text-primary">Paso 2 de 3  - Datos personales</p>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control bg-black" id="firstName" name="firstName" placeholder="name@example.com" required>
@@ -45,9 +43,7 @@
                             <label class="text-white" for="lastName">Edad</label>
                         </div>
                 </div>
-                <div class="tab">
-                    <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
-                    <h2 class="text-white">Crea tu cuenta</h2>
+                <div>
                     <p class="text-primary">Paso 3 de 3  - Perfil</p>
                         <!-- <div>
                             <p class="text-white">Foto de perfil</p>
@@ -63,11 +59,9 @@
                             <label class="text-white" for="description">Description (bio)</label>
                         </div>
                 </div>
-
-                <div class="d-flex justify-content-center"style="overflow:auto;">
+                <div class="d-flex justify-content-center">
                     <div>
-                            <button type="button" class="mt-4 btn bg-white text-black" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
-                            <button type="button" class="mt-4 btn bg-white text-black" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+                        <button type="submit" class="mt-4 btn bg-white text-black">Siguiente</button>
                     </div>
                 </div>
             </form>
