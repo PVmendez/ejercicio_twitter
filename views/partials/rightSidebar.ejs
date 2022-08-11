@@ -112,7 +112,7 @@
         <ul class="p-0 m-0">
             
           <% for( const thisUser of users ) { %>
-          <li class="d-flex py-2 px-3 align-items-center trend-item" onclick="location.href = '/<%= thisUser.username %>'">
+          <li class="d-flex py-2 px-3 align-items-center trend-item" onclick="location.href = '/<%= thisUser.userName %>'">
             <div class="px-1">
               <img
                 src="<%= thisUser.profile %> "
@@ -123,9 +123,9 @@
             </div>
             <div class="d-flex flex-column justify-content-center px-1">
               <a class="fw-bold fs-7 my-1 text-black"
-                ><%= thisUser.firstname + " " + thisUser.lastname %></a
+                ><%= thisUser.firstName + " " + thisUser.lastName %></a
               >
-              <p class="text-muted m-0 fs-7">@<%= thisUser.username %></p>
+              <p class="text-muted m-0 fs-7">@<%= thisUser.userName %></p>
             </div>
             <div class="flex-grow-1 text-end">
               <a href="/follow/<%#= thisUser.id %>" class="unfollow px-3 py-2 fw-bold fs-7

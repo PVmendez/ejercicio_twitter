@@ -192,7 +192,7 @@
       </li>
       <li class="nav-item mb-2">
         <a
-          href="/<%= user.username %> "
+          href="/<%= user.userName %> "
           class="
             btn
             text-dark
@@ -286,8 +286,8 @@
           <img src="<%= user.profile %> " alt="Avatar image" class="img-fluid user-image" />
         </div>
         <div class="px-1 d-none d-xl-flex flex-column justify-content-center">
-          <a class="fw-bold fs-7 text-black"><%= user.firstname + " " + user.lastname %> </a>
-          <p class="text-muted m-0 fs-7">@<%= user.username %></p>
+          <a class="fw-bold fs-7 text-black"><%= user.firstName + " " + user.lastName %> </a>
+          <p class="text-muted m-0 fs-7">@<%= user.userName %></p>
         </div>
       </div>
       <svg viewBox="0 0 24 24" class="d-none d-xl-inline">
@@ -314,8 +314,8 @@
             <img src="<%= user.profile %> " alt="Avatar image" class="img-fluid user-image" />
           </div>
           <div class="px-1 d-flex flex-column justify-content-center">
-            <a class="fw-bold fs-7 text-black"><%= user.firstname + " " + user.lastname %> </a>
-            <p class="text-muted m-0 fs-7">@<%= user.username %></p>
+            <a class="fw-bold fs-7 text-black"><%= user.firstName + " " + user.lastName %> </a>
+            <p class="text-muted m-0 fs-7">@<%= user.userName %></p>
           </div>
         </div>
         <svg viewBox="0 0 24 24" style="fill: var(--color-primary)">
@@ -331,7 +331,7 @@
         <a class="btn-gray fs-7 px-2 py-3 text-dark">Add an existing account</a>
         <form action="/logout" method="POST">
           <button type="submit" class="w-100 btn-gray fs-7 px-2 py-3 text-dark">
-            Log out @<%= user.username %>
+            Log out @<%= user.userName %>
           </button>
         </form>
       </div>

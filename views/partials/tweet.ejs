@@ -1,18 +1,19 @@
 <!-- Tweet -->
 <article
   class="tweet p-3 d-flex border-bottom"
-  onclick="location.href = '/<%=  tweet.author.username %>/<%=  tweet.id %>'"
+  onclick="location.href = '/<%=  tweet.author.userName %>/<%=  tweet.id %>'"
 >
   <div class="me-3 flex-shrink-0">
-    <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.username + " Avatar" %> "
+    <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.userName + " Avatar" %> "
     class="img-fluid user-image" />
   </div>
   <div class="flex-fill">
     <div class="d-flex justify-content-between align-items-center mb-1">
-      <a href="/<%= tweet.author.username %>" class="fs-7 fw-bold m-0 text-black"
+      <a href="/<%= tweet.author.userName %>" class="fs-7 fw-bold m-0 text-black"
         ><span class="hover-underline">
-          <%= tweet.author.firstname + " " + tweet.author.lastname %></span
-        ><span class="fw-normal text-secondary ms-1">@<%= tweet.author.username %> &middot; 1m</span>
+          <%= tweet.author.firstName + " " + tweet.author.lastName %></span
+        >
+        <span class="fw-normal text-secondary ms-1">@<%= tweet.author.userName %> &middot; 1m</span>
       </a>
       <div class="dropdown">
       <a
@@ -35,7 +36,7 @@
         onclick="event.stopPropagation()"
       >
         <form
-          action="/<%= tweet.author.username %>/<%= tweet.id %>  "
+          action="/<%= tweet.author.userName %>/<%= tweet.id %>  "
           method="post"
           enctype="application/x-www-form-urlencoded"
         >

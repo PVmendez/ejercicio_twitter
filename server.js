@@ -5,7 +5,7 @@ const dbInitialSetup = require("./dbInitialSetup");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
 const passportConfig = require("./config");
-const localVariable = require("./middleware/localVariables");
+const localVariable = require("./middlewares/localVariables");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));

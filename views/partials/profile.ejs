@@ -13,7 +13,7 @@
       </svg>
     </a>
     <div class="d-flex flex-column justify-content-center ms-3">
-      <h2 class="fs-6 m-0 fw-bold"><%= thisUser.firstname + " " + thisUser.lastname %></h2>
+      <h2 class="fs-6 m-0 fw-bold"><%= thisUser.firstName + " " + thisUser.lastName %></h2>
       <span class="text-muted fs-8"><%= thisUser.tweets.length %> Tweets</span>
     </div>
   </div>
@@ -31,8 +31,8 @@
           class="img-fluid rounded-circle profile-image"
         />
       </div>
-      <h2 class="fw-bolder fs-6"><%= thisUser.firstname + " " + thisUser.lastname %></h2>
-      <p class="text-muted m-0 fs-7">@<%= thisUser.username %></p>
+      <h2 class="fw-bolder fs-6"><%= thisUser.firstName + " " + thisUser.lastName %></h2>
+      <p class="text-muted m-0 fs-7">@<%= thisUser.userName %></p>
       <p class="my-1 fs-7"><%= thisUser.bio %></p>
       <p class="text-muted m-0 fs-7">
         <svg viewBox="0 0 24 24">
@@ -68,7 +68,7 @@
       </p>
     </div>
     <div>
-      <% if (thisUser.username === user.username) { %>
+      <% if (thisUser.userName === user.userName) { %>
       <a
         href="#"
         class="px-3 py-2 fw-bold fs-7 btn-outline-secondary rounded-pill follow-edit-button"
