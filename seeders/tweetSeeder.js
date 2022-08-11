@@ -1,16 +1,14 @@
 const Tweet = require("../models/Tweet");
-
+const User = require("../models/User");
 const { faker } = require("@faker-js/faker");
-
+const _ = require("lodash");
 
 module.exports = async () => {
-  await Tweet.collection.deleteMany({});
-
+  Tweet.collection.deleteMany();
+  const users = await User.find();
   const tweets = [];
 
-	await Tweet.collection.insertMany(tweets);
   for (let i = 0; i < 10; i++) {
-    const random = Math.floor(Math.random() * 10);
     tweets.push(
       new Tweet({
         content: faker.lorem.paragraph(),
@@ -18,10 +16,16 @@ module.exports = async () => {
           "2011-01-01T00:00:00.000Z",
           "2022-12-12T00:00:00.000Z"
         ),
+        author: _.sample(users),
         likes: Math.floor(Math.random() * 10),
       })
     );
   }
-
   await Tweet.collection.insertMany(tweets);
+
+  for (const user of users) {
+    const tweets = await Tweet.find({ user });
+    user.tweets = tweets;
+    await user.save();
+  }
 };

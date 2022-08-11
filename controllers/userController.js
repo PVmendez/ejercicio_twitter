@@ -7,21 +7,22 @@ async function index(req, res) {
 }
 
 async function showHome(req, res) {
+  res.locals.user = req.user;
   let users = await User.find().limit(50);
   users = _.sampleSize(users, 3);
   const tweets = await Tweet.find({})
     .sort("-createdAt")
     .limit(20)
     .populate({ path: "author", select: "firstName lastName userName profilePhoto" });
-  console.log(tweets);
-  res.render("home", { tweets, users });
+  res.render("home", { tweets, users, user: res.locals.user });
 }
 
 // Display the specified resource.
 async function show(req, res) {
+  
     const users = await User.find().limit(3);
     const user = await User.findOne({ username: req.params.username }).populate({
-      path: "tweets",
+      path: "tweetList",
       populate: {
         path: "user",
       },

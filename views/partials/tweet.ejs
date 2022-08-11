@@ -1,10 +1,10 @@
 <!-- Tweet -->
 <article
   class="tweet p-3 d-flex border-bottom"
-  onclick="location.href = '/<%= tweet.author.username %>/<%= tweet.id %>'"
+  onclick="location.href = '/<%=  tweet.author.username %>/<%=  tweet.id %>'"
 >
   <div class="me-3 flex-shrink-0">
-    <img src="<%= tweet.author.profile %> " alt="<%= tweet.author.username + " Avatar" %> "
+    <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.username + " Avatar" %> "
     class="img-fluid user-image" />
   </div>
   <div class="flex-fill">
@@ -14,7 +14,7 @@
           <%= tweet.author.firstname + " " + tweet.author.lastname %></span
         ><span class="fw-normal text-secondary ms-1">@<%= tweet.author.username %> &middot; 1m</span>
       </a>
-      <div class="dropdown" =>
+      <div class="dropdown">
       <a
         onclick="event.stopPropagation();"
         data-bs-toggle="dropdown"
@@ -29,7 +29,7 @@
           </g>
         </svg>
       </a>
-      <% if (tweet.author.id === author.id) { %>
+      <% if (tweet.author._id === user.id) { %>
       <div
         class="dropdown-menu dropdown-menu-end rounded-3 shadow bg-white border-0"
         onclick="event.stopPropagation()"
@@ -97,9 +97,9 @@
       </div>
       <span><%= Math.floor(Math.random()* 100 + 1) %></span></a
     >
-    <!-- LIKES -->
-    <a class=" btn-like d-inline-flex align-items-center fs-7 <%= tweet.likes.includes(author.id) ?
-    "liked" : null %> " href="/tweet/like/<%= tweet.id %>" >
+    <!-- LIKES 
+    <a class=" btn-like d-inline-flex align-items-center fs-7 <%#= tweet.likes.includes(user.id) ?
+    "liked" : null %> " href="/tweet/like/<%#= tweet.id %>" > -->
     <div class="rounded-circle p-2 d-inline-flex justify-content-center align-items-center me-lg-1">
       <svg viewBox="0 0 24 24">
         <g>
