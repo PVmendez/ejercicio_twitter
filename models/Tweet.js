@@ -4,14 +4,10 @@ const Schema = mongoose.Schema;
 
 const tweetSchema = new Schema({
 	content: String,
-	author: [
-		{
-			id: {
-				type: mongoose.Schema.ObjectId,
-				ref: "User",
-			},
-		},
-	],
+	author: {
+		type: Schema.Types.ObjectId,
+		ref: "User",
+	},
 	date: Date,
 	likes: Number,
 });

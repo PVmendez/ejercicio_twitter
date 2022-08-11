@@ -3,6 +3,7 @@ const User = require("../models/User");
 const { faker } = require("@faker-js/faker");
 const _ = require("lodash");
 
+
 module.exports = async () => {
   Tweet.collection.deleteMany();
   const users = await User.find();

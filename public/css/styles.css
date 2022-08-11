@@ -20,11 +20,6 @@
 .form-control.bg-black {
     color: white !important;
 }
-
-#register2, #register1 {
-    display: none;
-}
-
 input[type=file] {
   display: none;
   }
