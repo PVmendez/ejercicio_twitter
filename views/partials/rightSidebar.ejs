@@ -128,10 +128,10 @@
               <p class="text-muted m-0 fs-7">@<%= thisUser.username %></p>
             </div>
             <div class="flex-grow-1 text-end">
-              <a href="/follow/<%= thisUser.id %>" class="unfollow px-3 py-2 fw-bold fs-7
-              rounded-pill <%= user.following.includes(thisUser.id) ? null : "d-none" %>"></a> <a
-              href="/follow/<%= thisUser.id %>" class="follow px-3 py-2 fw-bold fs-7
-              rounded-pill <%= user.following.includes(thisUser.id) ? "d-none" : null %>" >Follow</a>
+              <a href="/follow/<%#= thisUser.id %>" class="unfollow px-3 py-2 fw-bold fs-7
+              rounded-pill <%#= user.following.includes(thisUser.id) ? null : "d-none" %>"></a> <a
+              href="/follow/<%#= thisUser.id %>" class="follow px-3 py-2 fw-bold fs-7
+              rounded-pill <%#= user.following.includes(thisUser.id) ? "d-none" : null %>" >Follow</a>
             </div>
           </li>
           <% } %>

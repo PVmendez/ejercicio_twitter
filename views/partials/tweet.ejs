@@ -1,20 +1,20 @@
 <!-- Tweet -->
 <article
   class="tweet p-3 d-flex border-bottom"
-  onclick="location.href = '/<%= tweet.user.username %>/<%= tweet.id %>'"
+  onclick="location.href = '/<%=  tweet.author.username %>/<%=  tweet.id %>'"
 >
   <div class="me-3 flex-shrink-0">
-    <img src="<%= tweet.user.profile %> " alt="<%= tweet.user.username + " Avatar" %> "
+    <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.username + " Avatar" %> "
     class="img-fluid user-image" />
   </div>
   <div class="flex-fill">
     <div class="d-flex justify-content-between align-items-center mb-1">
-      <a href="/<%= tweet.user.username %>" class="fs-7 fw-bold m-0 text-black"
+      <a href="/<%= tweet.author.username %>" class="fs-7 fw-bold m-0 text-black"
         ><span class="hover-underline">
-          <%= tweet.user.firstname + " " + tweet.user.lastname %></span
-        ><span class="fw-normal text-secondary ms-1">@<%= tweet.user.username %> &middot; 1m</span>
+          <%= tweet.author.firstname + " " + tweet.author.lastname %></span
+        ><span class="fw-normal text-secondary ms-1">@<%= tweet.author.username %> &middot; 1m</span>
       </a>
-      <div class="dropdown" =>
+      <div class="dropdown">
       <a
         onclick="event.stopPropagation();"
         data-bs-toggle="dropdown"
@@ -29,13 +29,13 @@
           </g>
         </svg>
       </a>
-      <% if (tweet.user.id === user.id) { %>
+      <% if (tweet.author._id === user.id) { %>
       <div
         class="dropdown-menu dropdown-menu-end rounded-3 shadow bg-white border-0"
         onclick="event.stopPropagation()"
       >
         <form
-          action="/<%= tweet.user.username %>/<%= tweet.id %>  "
+          action="/<%= tweet.author.username %>/<%= tweet.id %>  "
           method="post"
           enctype="application/x-www-form-urlencoded"
         >
@@ -97,9 +97,9 @@
       </div>
       <span><%= Math.floor(Math.random()* 100 + 1) %></span></a
     >
-    <!-- LIKES -->
-    <a class=" btn-like d-inline-flex align-items-center fs-7 <%= tweet.likes.includes(user.id) ?
-    "liked" : null %> " href="/tweet/like/<%= tweet.id %>" >
+    <!-- LIKES 
+    <a class=" btn-like d-inline-flex align-items-center fs-7 <%#= tweet.likes.includes(user.id) ?
+    "liked" : null %> " href="/tweet/like/<%#= tweet.id %>" > -->
     <div class="rounded-circle p-2 d-inline-flex justify-content-center align-items-center me-lg-1">
       <svg viewBox="0 0 24 24">
         <g>
