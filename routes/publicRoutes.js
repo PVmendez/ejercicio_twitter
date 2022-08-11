@@ -1,7 +1,7 @@
 const express = require("express");
 const publicRouter = express.Router();
 const userController = require('../controllers/userController');
-const isAuthenticated = require("../middlewares/isAuthenticated");
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 // Rutas Públicas:
 // ...

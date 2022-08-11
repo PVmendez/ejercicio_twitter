@@ -7,12 +7,13 @@ async function index(req, res) {
 }
 
 async function showHome(req, res) {
-  let users = await User.find().limit(60);
+  let users = await User.find().limit(50);
   users = _.sampleSize(users, 3);
   const tweets = await Tweet.find({})
     .sort("-createdAt")
     .limit(20)
-    .populate({ path: "user", select: "firstName lastName userName profilePhoto" });
+    .populate({ path: "author", select: "firstName lastName userName profilePhoto" });
+  console.log(tweets);
   res.render("home", { tweets, users });
 }
 
@@ -25,7 +26,7 @@ async function show(req, res) {
         path: "user",
       },
     });
-    if (!user) {
+    if (user) {
       return res.render("profilePage", { thisUser: user, users });
     } 
     return res.redirect("/home");

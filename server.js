@@ -5,7 +5,7 @@ const routes = require("./routes");
 const dbInitialSetup = require("./dbInitialSetup");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
-const localVariable = require("./middlewares/localVariables");
+const localVariable = require("./middleware/localVariables");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
