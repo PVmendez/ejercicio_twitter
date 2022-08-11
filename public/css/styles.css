@@ -20,11 +20,6 @@
 .form-control.bg-black {
     color: white !important;
 }
-
-#register2, #register3 {
-    display: none;
-}
-
 input[type=file] {
   display: none;
   }
@@ -39,4 +34,12 @@ input[type=file] {
 
 .file-upload:hover {
   background-color: rgb(29, 29, 29);
+}
+
+.tab {
+  display: none;
+}
+
+input.invalid {
+  background-color: #ec2b2b!important;
 }

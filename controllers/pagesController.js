@@ -10,6 +10,7 @@ async function register(req, res) {
 async function login(req, res) {
   res.render("login");
 }
+
 module.exports = {
 	landing,
 	register,

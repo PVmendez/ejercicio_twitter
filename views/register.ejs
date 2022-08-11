@@ -11,23 +11,24 @@
     <div class="landing-bg d-flex align-items-center vh-100">
         <div class="container w-50 rounded-3 bg-black p-5 shadow-lg">
             <form id="regForm" action="/register" method="POST">
-                <div id="register1">
+                <div class="tab">
                     <a class="text-decoration-none "href="/">Volver</a>
                     <h2 class="text-white ">Crea tu cuenta</h2>
                     <p class="text-primary">Paso 1 de 3 - Información de registro</p>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control bg-black" id="userName" name="userName" placeholder="name@example.com" required>
-                            <label class="text-white" for="userName">Nombre de usuario</label>
+                            <label class="text-white" for="userName">* Nombre de usuario</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control bg-black" id="email" name="email" placeholder="name@example.com" required>
+                            <label class="text-white" for="email">* Correo electrónico</label>
                         </div>
                         <div class="form-floating">
                             <input type="password" class="form-control bg-black" id="password" name="password" placeholder="Password" required>
-                            <label class="text-white" for="password">Contraseña</label>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="mt-4 btn bg-white text-black" onclick="displayNextRegister()">Siguiente</button>
+                            <label class="text-white" for="password">* Contraseña</label>
                         </div>
                 </div>
-                <div id="register2">
+                <div class="tab">
                     <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
                     <h2 class="text-white">Crea tu cuenta</h2>
                     <p class="text-primary">Paso 2 de 3  - Datos personales</p>
@@ -39,15 +40,12 @@
                             <input type="text" class="form-control bg-black" id="lastName" name="lastName"placeholder="name@example.com" required>
                             <label class="text-white" for="lastName">Apellido</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control bg-black" id="email" name="email" placeholder="name@example.com" required>
-                            <label class="text-white" for="email">Correo electrónico</label>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="mt-4 btn bg-white text-black" onclick="displayNextRegister()">Siguiente</button>
+                           <div class="form-floating mb-3">
+                            <input type="number" class="form-control bg-black" id="age" name="age"placeholder="name@example.com" required>
+                            <label class="text-white" for="lastName">Edad</label>
                         </div>
                 </div>
-                <div id="register3">
+                <div class="tab">
                     <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
                     <h2 class="text-white">Crea tu cuenta</h2>
                     <p class="text-primary">Paso 3 de 3  - Perfil</p>
@@ -64,9 +62,13 @@
                             <textarea class="form-control bg-black " placeholder="Leave a comment here" id="description" name="description" style="height: 100px"></textarea>
                             <label class="text-white" for="description">Description (bio)</label>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="mt-4 btn bg-white text-black" onclick="submitForm()">Registrarse</button>
-                        </div>
+                </div>
+
+                <div class="d-flex justify-content-center"style="overflow:auto;">
+                    <div>
+                            <button type="button" class="mt-4 btn bg-white text-black" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+                            <button type="button" class="mt-4 btn bg-white text-black" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+                    </div>
                 </div>
             </form>
         </div>
