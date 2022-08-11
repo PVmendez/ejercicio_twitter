@@ -1,7 +1,5 @@
 const User = require("../models/User");
-
 const { faker } = require("@faker-js/faker");
-
 
 module.exports = async () => {
   await User.collection.deleteMany({});

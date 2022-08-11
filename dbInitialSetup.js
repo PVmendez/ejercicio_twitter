@@ -4,6 +4,6 @@ const userSeeder = require("./seeders/userSeeder");
 
 module.exports = async () => {
 	db.connection;
-	tweetSeeder();
-	userSeeder();
+	await userSeeder();
+	await tweetSeeder();
 };

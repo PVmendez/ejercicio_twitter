@@ -10,69 +10,65 @@
   <body>
     <div class="landing-bg d-flex align-items-center vh-100">
         <div class="container w-50 rounded-3 bg-black p-5 shadow-lg">
-            <div id="register1">
-                <a class="text-decoration-none "href="/">Volver</a>
-                <h2 class="text-white ">Crea tu cuenta</h2>
-                <p class="text-primary">Paso 1 de 3 - Información de registro</p>
-                <form>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control bg-black" id="floatingInput" placeholder="name@example.com" required>
-                        <label class="text-white" for="floatingInput">Nombre de usuario</label>
-                    </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control bg-black" id="floatingPassword" placeholder="Password" required>
-                        <label class="text-white" for="floatingPassword">Contraseña</label>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="mt-4 btn bg-white text-black" onclick="displayNextRegister()">Siguiente</button>
-                    </div>
-                </form>
-            </div>
-            <div id="register2">
-                <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
-                <h2 class="text-white">Crea tu cuenta</h2>
-                <p class="text-primary">Paso 2 de 3  - Datos personales</p>
-                <form>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control bg-black" id="floatingInput" placeholder="name@example.com" required>
-                        <label class="text-white" for="floatingInput">Nombre</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control bg-black" id="floatingInput" placeholder="name@example.com" required>
-                        <label class="text-white" for="floatingInput">Apellido</label>
-                    </div>
-                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control bg-black" id="floatingInput" placeholder="name@example.com" required>
-                        <label class="text-white" for="floatingInput">Correo electrónico</label>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="mt-4 btn bg-white text-black" onclick="displayNextRegister()">Siguiente</button>
-                    </div>
-                </form>
-            </div>
-            <div id="register3">
-                <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
-                <h2 class="text-white">Crea tu cuenta</h2>
-                <p class="text-primary">Paso 3 de 3  - Perfil</p>
-                <form>
-                    <div>
-                        <p class="text-white">Foto de perfil</p>
-                        <div class="mb-3 d-flex justify-content-center">
-                            <input type="file" id="attachment" name="attachment"/>
-                            <label for="attachment" class="file-upload d-flex align-items-center justify-content-center">
-                                    <img src="/img/camera.svg" width="50"/>
-                            </label>
+            <form id="regForm" action="/register" method="POST">
+                <div id="register1">
+                    <a class="text-decoration-none "href="/">Volver</a>
+                    <h2 class="text-white ">Crea tu cuenta</h2>
+                    <p class="text-primary">Paso 1 de 3 - Información de registro</p>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control bg-black" id="userName" name="userName" placeholder="name@example.com" required>
+                            <label class="text-white" for="userName">Nombre de usuario</label>
                         </div>
-                    </div>
-                    <div class="form-floating">
-                        <textarea class="form-control bg-black " placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                        <label class="text-white" for="floatingTextarea2">Description (bio)</label>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="mt-4 btn bg-white text-black">Registrarse</button>
-                    </div>
-                </form>
-            </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control bg-black" id="password" name="password" placeholder="Password" required>
+                            <label class="text-white" for="password">Contraseña</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="mt-4 btn bg-white text-black" onclick="displayNextRegister()">Siguiente</button>
+                        </div>
+                </div>
+                <div id="register2">
+                    <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
+                    <h2 class="text-white">Crea tu cuenta</h2>
+                    <p class="text-primary">Paso 2 de 3  - Datos personales</p>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control bg-black" id="firstName" name="firstName" placeholder="name@example.com" required>
+                            <label class="text-white" for="firstName">Nombre</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control bg-black" id="lastName" name="lastName"placeholder="name@example.com" required>
+                            <label class="text-white" for="lastName">Apellido</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control bg-black" id="email" name="email" placeholder="name@example.com" required>
+                            <label class="text-white" for="email">Correo electrónico</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="mt-4 btn bg-white text-black" onclick="displayNextRegister()">Siguiente</button>
+                        </div>
+                </div>
+                <div id="register3">
+                    <a class="text-decoration-none" onclick="displayLastRegister()">Volver</a>
+                    <h2 class="text-white">Crea tu cuenta</h2>
+                    <p class="text-primary">Paso 3 de 3  - Perfil</p>
+                        <!-- <div>
+                            <p class="text-white">Foto de perfil</p>
+                            <div class="mb-3 d-flex justify-content-center">
+                                <input type="file" id="profilePhoto" name="profilePhoto"/>
+                                <label for="profilePhoto" class="file-upload d-flex align-items-center justify-content-center">
+                                        <img src="/img/camera.svg" width="50"/>
+                                </label>
+                            </div>
+                        </div> -->
+                        <div class="form-floating">
+                            <textarea class="form-control bg-black " placeholder="Leave a comment here" id="description" name="description" style="height: 100px"></textarea>
+                            <label class="text-white" for="description">Description (bio)</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="mt-4 btn bg-white text-black" onclick="submitForm()">Registrarse</button>
+                        </div>
+                </div>
+            </form>
         </div>
     </div>
     <script src="/js/app.js"></script>
