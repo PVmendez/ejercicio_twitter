@@ -14,7 +14,7 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 passportConfig(app);
-app.use(localVariable);
+//app.use(localVariable);
 
 routes(app);
 dbInitialSetup();

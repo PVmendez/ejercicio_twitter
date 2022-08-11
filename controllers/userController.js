@@ -19,16 +19,16 @@ async function showHome(req, res) {
 
 // Display the specified resource.
 async function show(req, res) {
-  
+    res.locals.user = req.user;
     const users = await User.find().limit(3);
     const user = await User.findOne({ username: req.params.username }).populate({
       path: "tweetList",
       populate: {
-        path: "user",
+        path: "author",
       },
     });
     if (user) {
-      return res.render("profilePage", { thisUser: user, users });
+      return res.render("profilePage", { thisUser: user, users, userLog: res.locals.user });
     } 
     return res.redirect("/home");
 }

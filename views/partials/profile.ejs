@@ -13,8 +13,9 @@
       </svg>
     </a>
     <div class="d-flex flex-column justify-content-center ms-3">
-      <h2 class="fs-6 m-0 fw-bold"><%= thisUser.firstname + " " + thisUser.lastname %></h2>
-      <span class="text-muted fs-8"><%= thisUser.tweets.length %> Tweets</span>
+      
+      <h2 class="fs-6 m-0 fw-bold"><%= thisUser.firstName + " " + thisUser.lastName %></h2>
+      <span class="text-muted fs-8"> <%#= thisUser.tweets.length %>0 Tweets</span>
     </div>
   </div>
 
@@ -50,35 +51,38 @@
             <circle cx="12" cy="17.486" r="1.285"></circle>
           </g>
         </svg>
+        <% console.log(thisUser); %>
+        <% console.log(user); %>
         <span class="ms-1"
-          >Joined <%= thisUser.createdAt.toLocaleDateString('en-US', { month: 'long',year:
-          'numeric'}) %></span
+          >Joined <%#= thisUser.createdAt.toLocaleDateString('en-US', { month: 'long',year:
+          'numeric'}) %> Today</span
         >
       </p>
       <p class="mt-1">
         <span class="text-muted fs-7 me-2"
           ><span class="text-black fw-bold" id="following-count"
-            ><%= thisUser.following.length %>
+            ><%#= thisUser.following.length %>
           </span>
           Following</span
         >
         <span class="text-muted fs-7 me-2"
-          ><span class="text-black fw-bold"><%= thisUser.followers.length %> </span> Followers</span
+          ><span class="text-black fw-bold"><%#= thisUser.followers.length %> </span> Followers</span
         >
       </p>
     </div>
     <div>
-      <% if (thisUser.username === user.username) { %>
+      <% console.log(userLog); %> 
+      <%# if (thisUser.userName === userLog.userName) { %>
       <a
         href="#"
         class="px-3 py-2 fw-bold fs-7 btn-outline-secondary rounded-pill follow-edit-button"
         >Edit profile</a
       >
-      <% } else { %> <a href="/follow/<%= thisUser.id %>" class="unfollow px-3 py-2 fw-bold fs-7
-      rounded-pill follow-edit-button <%= user.following.includes(thisUser.id) ? null : "d-none" %>"></a> 
+      <%# } else { %> <a href="/follow/<%= thisUser.id %>" class="unfollow px-3 py-2 fw-bold fs-7
+      rounded-pill follow-edit-button <%#= userLog.following.includes(thisUser.id) ? null : "d-none" %>"></a> 
       <a href="/follow/<%= thisUser.id %>" class="follow px-3 py-2 fw-bold fs-7 rounded-pill
-      follow-edit-button <%= user.following.includes(thisUser.id) ? "d-none" : null %>" >Follow</a>
-       <% } %>
+      follow-edit-button <%#= user.following.includes(thisUser.id) ? "d-none" : null %>" >Follow</a>
+       <%# } %>
     </div>
   </div>
   <!-- Navigation -> Tweets - Tweets & Replies - Media - Likes  -->
@@ -92,7 +96,7 @@
   </div>
   <!-- Tweets -->
   <div id="tweets-section">
-    <% if (thisUser.tweets.length > 0) { %> <% for( const tweet of thisUser.tweets) { %> <%-
-    include("../partials/tweet", {tweet}) %> <% } %> <% } %>
+    <%# if (thisUser.tweets.length > 0) { %> <%# for( const tweet of thisUser.tweets) { %> <%#-
+    include("../partials/tweet", {tweet}) %> <%# } %> <%# } %>
   </div>
 </section>

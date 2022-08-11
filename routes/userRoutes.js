@@ -7,6 +7,6 @@ const tweetController = require('../controllers/tweetController');
 // ...
 
 userRouter.get("/:username", userController.show);
-userRouter.get("/random", tweetController.show);
+userRouter.get("/:username/:tweetId", tweetController.show);
 
 module.exports = userRouter;
