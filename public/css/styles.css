@@ -1,6 +1,7 @@
 /* Colocar aquí CSS "propio" */
 .landing-bg {
     background-image: url("../img/landingBg.png");
+    background-size: auto;
 }
 
 .btn {

@@ -7,5 +7,4 @@ module.exports = async () => {
 	// await userSeeder();
 	// await tweetSeeder();
 	console.log('[Database] Se han insertado los datos');
-
 };

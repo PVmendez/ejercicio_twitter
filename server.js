@@ -1,11 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const routes = require("./routes");
+const passportConfig = require("./passportConfig");
+const localVariable = require("./middlewares/localVariables");
 const dbInitialSetup = require("./dbInitialSetup");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
-const passportConfig = require("./config");
-const localVariable = require("./middlewares/localVariables");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
