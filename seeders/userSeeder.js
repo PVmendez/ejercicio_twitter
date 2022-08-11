@@ -20,5 +20,5 @@ module.exports = async () => {
 			})
 		);
 	}
-	User.collection.insertMany(users);
+	await User.collection.insertMany(users);
 };

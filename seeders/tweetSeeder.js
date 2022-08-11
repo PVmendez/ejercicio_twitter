@@ -21,5 +21,5 @@ module.exports = async () => {
 		);
 	}
 
-	Tweet.collection.insertMany(tweets);
+	await Tweet.collection.insertMany(tweets);
 };

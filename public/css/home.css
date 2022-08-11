@@ -1,0 +1,412 @@
+:root {
+  --color-primary: rgb(29, 155, 240);
+  --color-like: rgb(249, 24, 129);
+  --color-like-200: rgba(249, 24, 129, 0.2);
+  --color-primary-100: rgba(29, 156, 240, 0.1);
+  --color-retweet: rgb(0, 186, 124);
+  --color-retweet-200: rgba(0, 186, 124, 0.2);
+  --color-gray-100: rgba(15, 20, 25, 0.1);
+}
+
+button {
+  background-color: transparent;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* ----------- FLEXBOX --------------- */
+
+main {
+  flex: 0 0 560px;
+}
+
+.right-sidebar {
+  flex: 0 0 340px;
+}
+
+.left-sidebar {
+  flex: 0 1 260px;
+}
+
+@media (max-width: 1200px) {
+  .left-sidebar {
+    flex: 0 0 65px;
+  }
+}
+
+@media (max-width: 992px) {
+  .right-sidebar {
+    flex-shrink: 1;
+  }
+}
+
+@media (max-width: 896px) {
+  .right-sidebar,
+  #explore-icon {
+    display: none;
+  }
+}
+
+@media (min-width: 896px) {
+  #search-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  main {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  .left-sidebar {
+    flex-shrink: 0;
+  }
+}
+
+/* ----------------- X -------------- */
+svg {
+  width: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.fs-7 {
+  font-size: 0.8rem;
+}
+
+.fs-8 {
+  font-size: 0.7rem;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.btn-soft:hover {
+  background-color: var(--color-primary-100);
+}
+#delete-btn {
+  color: rgb(244, 33, 46);
+}
+
+#delete-btn svg {
+  fill: rgb(244, 33, 46);
+}
+
+.btn-retweet svg,
+.btn-like svg,
+.btn-soft svg {
+  fill: var(--color-primary);
+}
+
+.profile-image {
+  max-width: 96px;
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 3rem;
+}
+
+#sidebar .user-image {
+  width: 2.3rem;
+}
+
+.tweet-content {
+  max-height: 60vh;
+}
+
+.tweet-content [contentEditable="true"]:focus-visible {
+  outline: none;
+}
+
+.tweet-content [contentEditable="true"]:empty:before {
+  content: attr(placeholder);
+  color: var(--bs-gray-700);
+  pointer-events: none;
+  display: block; /* For Firefox */
+}
+.modal-content .tweet-content [contentEditable="true"] {
+  min-height: 4rem;
+}
+
+hr {
+  color: var(--bs-gray-500);
+}
+
+.form-footer svg {
+  width: 1.125rem;
+}
+
+.btn {
+  padding: 0.3rem 0.7rem;
+  border: none;
+}
+
+.tweet:hover {
+  background-color: var(--bs-gray-200);
+  cursor: pointer;
+}
+
+.tweet .btn-soft svg {
+  fill: var(--bs-gray-600);
+}
+
+.btn-like:hover .rounded-circle {
+  background-color: var(--color-like-200);
+}
+.btn-like:hover span {
+  color: var(--color-like);
+}
+.btn-like:hover svg {
+  stroke: var(--color-like);
+}
+
+.tweet-actions {
+  margin-left: -0.5rem;
+  max-width: 350px;
+}
+
+.tweet-actions .rounded-circle {
+  margin-right: 0.2rem;
+}
+.tweet-actions svg {
+  fill: var(--bs-gray-600);
+}
+
+.btn-like svg {
+  stroke: var(--bs-gray-600);
+  stroke-width: 1.5px;
+  fill: none;
+  transition: 1s;
+}
+.tweet-actions a {
+  text-decoration: none;
+  color: var(--bs-gray-600);
+}
+#singleTweet .tweet-actions {
+  max-width: none;
+}
+.tweet-actions .btn-soft:hover {
+  background-color: transparent;
+}
+
+.tweet-actions .btn-soft:hover svg {
+  fill: var(--color-primary);
+}
+.tweet-actions .btn-soft:hover span {
+  color: var(--color-primary);
+}
+
+.tweet-actions .btn-soft:hover .rounded-circle {
+  background-color: var(--color-primary-100);
+}
+
+.tweet-actions .btn-retweet:hover svg {
+  fill: var(--color-retweet);
+}
+.tweet-actions .btn-retweet:hover span {
+  color: var(--color-retweet);
+}
+
+.tweet-actions .btn-retweet:hover .rounded-circle {
+  background-color: var(--color-retweet-200);
+}
+
+#sidebar {
+  position: fixed;
+  height: 100vh;
+}
+
+.btn-gray:hover {
+  background-color: var(--color-gray-100);
+  cursor: pointer;
+}
+.btn-gray svg {
+  width: 1rem;
+}
+#sidebar .btn-soft,
+#sidebar .btn {
+  padding: 0.6rem;
+  font-size: 1.125rem;
+}
+
+#sidebar .btn-primary.btn {
+  padding: 0.7rem;
+  font-size: 0.9rem;
+}
+#sidebar .btn-primary.btn svg {
+  width: 1.5rem;
+  fill: #fff;
+}
+
+#sidebar .nav-item svg {
+  width: 1.6rem;
+}
+
+.trend-item:hover {
+  background-color: var(--bs-gray-200);
+  cursor: pointer;
+}
+
+.trend-item span {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+input:focus-visible {
+  outline: none;
+  border: 1px solid var(--color-primary);
+  background-color: #fff;
+}
+
+input:focus-visible + svg {
+  fill: var(--color-primary);
+}
+
+input {
+  padding: 3rem 2.5rem;
+  border: 1px solid var(--bs-light);
+  background-color: var(--bs-light);
+}
+
+form svg {
+  position: absolute;
+  left: 0.5rem;
+}
+
+.link-secondary {
+  color: var(--bs-gray-600);
+  font-size: 0.7rem;
+}
+
+.hover-underline:hover,
+.link-secondary:hover {
+  text-decoration: underline;
+}
+
+.follow {
+  color: #fff;
+  background-color: #000;
+  transition: 0.4s;
+}
+
+.follow:hover {
+  background-color: var(--bs-gray-900);
+  color: #fff;
+}
+
+.unfollow {
+  border: var(--color-gray-100) 1px solid;
+  color: #000;
+  width: 6rem;
+  text-align: center;
+  transition: 0.4s;
+  display: inline-block;
+}
+
+.unfollow::before {
+  content: "Following";
+}
+.unfollow:hover {
+  background-color: rgba(244, 33, 46, 0.1);
+  color: rgb(244, 33, 46);
+}
+.unfollow:hover::before {
+  content: "Unfollow";
+}
+
+#tweet-button {
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  #tweet-button {
+    width: auto;
+  }
+}
+
+@media (max-height: 630px) {
+  #list-item,
+  #bookmark-item {
+    display: none;
+  }
+}
+
+#profile-info {
+  position: relative;
+  top: -4rem;
+}
+
+#profile-info .rounded-circle {
+  width: fit-content;
+}
+
+#profile-container {
+  margin-bottom: -4rem;
+}
+#profile-nav a {
+  position: relative;
+}
+
+#profile-nav a::after {
+  display: none;
+  content: "";
+  height: 4px;
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  width: 60%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+#profile-nav a.active:after {
+  display: block;
+  isolation: isolate;
+}
+
+.follow-edit-button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.btn-like.liked svg {
+  fill: var(--color-like);
+  stroke: var(--color-like);
+}
+
+.btn-like.liked div + span {
+  color: var(--color-like);
+}
+
+.newTweet {
+  animation: fadeIn 0.6s;
+}
+.logout-menu {
+  width: 300px;
+}
+
+.logout-menu form button {
+  background-color: transparent;
+  border: none;
+  text-align: start;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
