@@ -1,19 +1,12 @@
 const express = require("express");
 const publicRouter = express.Router();
-const userController = require('../controllers/userController');
 const isAuthenticated = require("../middleware/isAuthenticated");
+const pagesController = require("../controllers/pagesController");
+const passport = require("passport");
 
-// Rutas Públicas:
-// ...
 
-publicRouter.get("/login");
-publicRouter.get("/register");
-publicRouter.get("/", userController.showHome);
-const pagesController = require("../controllers/pagesController")
-const passport = require("passport")
-
-// Rutas Públicas:
-// ...
+publicRouter.get("/", pagesController.landing);
+publicRouter.get("/home", pagesController.home);
 
 publicRouter.get("/login", pagesController.login);
 publicRouter.post("/login",
@@ -31,6 +24,5 @@ publicRouter.post("/register",
   })
 );
 
-publicRouter.get("/", pagesController.landing);
 
 module.exports = publicRouter;

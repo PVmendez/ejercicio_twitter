@@ -6,17 +6,6 @@ async function index(req, res) {
   
 }
 
-async function showHome(req, res) {
-  res.locals.user = req.user;
-  let users = await User.find().limit(50);
-  users = _.sampleSize(users, 3);
-  const tweets = await Tweet.find({})
-    .sort("-createdAt")
-    .limit(20)
-    .populate({ path: "author", select: "firstName lastName userName profilePhoto" });
-  res.render("home", { tweets, users, user: res.locals.user });
-}
-
 // Display the specified resource.
 async function show(req, res) {
   
@@ -52,7 +41,6 @@ async function destroy(req, res) {}
 
 module.exports = {
   index,
-  showHome,
   show,
   create,
   store,
