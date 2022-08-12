@@ -17,7 +17,9 @@ module.exports = (app) => {
   passport.use(
     "login",
     new LocalStrategy(async function (username, password, done) {
-      const user = await User.findOne({ userName: username });
+      const user = await User.findOne({
+        $or: [{ userName: username }, { email: username }],
+      });
 
       if (!user) {
         return done(null, false, { message: "Incorrect username." });
@@ -80,5 +82,4 @@ module.exports = (app) => {
         done(error, user);
       });
   });
-
 };

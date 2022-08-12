@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tweetSchema = new Schema({
-  content: String,
+  content: {
+    type: String,
+    maxLength: 140,
+  },
   date: Date,
   author: {
     type: Schema.Types.ObjectId,
@@ -11,8 +14,8 @@ const tweetSchema = new Schema({
   },
   likes: [
     {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
   ],
 });

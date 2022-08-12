@@ -1,55 +1,60 @@
 <div
-   class="modal fade"
-   id="showLikesModal"
-   tabindex="-1"
-   aria-labelledby="showLikesModal"
-   aria-hidden="true"
-   >
-<div class="modal-dialog">
-   <div class="modal-content rounded-4 border-0">
+  class="modal fade"
+  id="showLikesModal"
+  tabindex="-1"
+  aria-labelledby="showLikesModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content rounded-4 border-0">
       <div class="modal-header modalLikes py-1">
-         <button
-            type="button"
-            class="btn-close m-0 fs-7 btn-gray rounded-circle"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-            ></button>
-          <div class="d-flex flex-column justify-content-center ms-3">
-            <h2 class="fs-6 m-0 fw-bold">Marcado como Me gusta por</h2>
-          </div>
+        <button
+          type="button"
+          class="btn-close m-0 fs-7 btn-gray rounded-circle"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+        <div class="d-flex flex-column justify-content-center ms-3">
+          <h2 class="fs-6 m-0 fw-bold">Marcado como Me gusta por</h2>
+        </div>
       </div>
       <!--  Contenido -->
-      <% for (user of tweet.likes) {%> 
-      <div 
-         class="user p-3 d-flex align-items-center"
-         onclick="location.href ='/<%=user.userName %>/'"
-         >
-         <div class="me-3 flex-shrink-0">
-            <img src="<%= user.profilePhoto %>" alt="<%= user.userName + " Avatar" %> "
-               class="img-fluid user-image" />
-         </div>
-         <div class="flex-fill">
-            <div>
-               <a href="/<%= user.userdName %>" class="fs-7 d-flex flex-column fw-bold m-0 text-black">
-                  <span class="hover-underline mb-0">
-                  <%= user.firstName + " " + user.lastName %>
-                  </span>
-                  <span class="fw-normal text-secondary">@<%= user.userName %></span>
-               </a>
-            </div>
-            <div>
-               <p class="fs-7">
-                  <%= user.description %> 
-               </p>
-            </div>
-         </div>
-         <div>
-            <form action="/<%=user.userName%>/follow ">
-               <button type="submit" class="btn btn-dark text-white rounded-4">Follow</button>
-            </form>
-         </div>
+      <% for (user of tweet.likes) {%>
+      <div
+        class="user p-3 d-flex align-items-center"
+        onclick="location.href ='/<%=user.userName %>/'"
+      >
+        <div class="me-3 flex-shrink-0">
+          <img src="<%= user.profilePhoto %>" alt="<%= user.userName + " Avatar"
+          %> " class="img-fluid user-image" />
+        </div>
+        <div class="flex-fill">
+          <div>
+            <a
+              href="/<%= user.userdName %>"
+              class="fs-7 d-flex flex-column fw-bold m-0 text-black"
+            >
+              <span class="hover-underline mb-0">
+                <%= user.firstName + " " + user.lastName %>
+              </span>
+              <span class="fw-normal text-secondary"
+                >@<%= user.userName %></span
+              >
+            </a>
+          </div>
+          <div>
+            <p class="fs-7"><%= user.description %></p>
+          </div>
+        </div>
+        <div>
+          <form action="/<%=user.userName%>/follow ">
+            <button type="submit" class="btn btn-dark text-white rounded-4">
+              Follow
+            </button>
+          </form>
+        </div>
       </div>
-
       <% } %>
-   </div>
+    </div>
+  </div>
 </div>
