@@ -1,27 +1,27 @@
 <div class="tweet-form px-3 pt-2 pb-3 d-flex">
-  <div class="me-2 flex-shrink-0">
-    <a href="/<%=user.userName%> ">
+   <div class="me-2 flex-shrink-0">
+      <a href="/<%=user.userName%> ">
       <img
-          src="<%= user.profilePhoto %>"
-          alt="No avatar image"
-          class="img-fluid user-image"
-        />
-    </a>
-  </div>
-  <div class="flex-fill overflow-auto">
-    <div class="tweet-content overflow-auto">
-      <div id="new-tweet-content">
-        <textarea spellcheck="false" class="w-100" style="resize: none; border:none;" maxlength="140" rows="3" placeholder="¿Que está pasando?"></textarea>
+         src="<%= user.profilePhoto %>"
+         alt="No avatar image"
+         class="img-fluid user-image"
+         />
+      </a>
+   </div>
+   <div class="flex-fill overflow-auto">
+      <div class="tweet-content overflow-auto">
+         <div id="new-tweet-content">
+            <textarea spellcheck="false" class="w-100" style="resize: none; border:none;" maxlength="140" rows="3" placeholder="¿Que está pasando?"></textarea>
+         </div>
       </div>
-    </div>
-    <hr class="mt-0 mb-0" />
-    <div class="form-footer pt-2 d-flex justify-content-between align-items-end">
-      <button
-        class="py-2 px-3 btn-primary rounded-pill fw-bold fs-7 border-0"
-        id="tweet-post"
-      >
-        Tweet
-      </button>
-    </div>
-  </div>
+      <hr class="mt-0 mb-0" />
+      <div class="form-footer pt-2 d-flex justify-content-between align-items-end">
+         <button
+            class="py-2 px-3 btn-primary rounded-pill fw-bold fs-7 border-0"
+            id="tweet-post"
+            >
+         Tweet
+         </button>
+      </div>
+   </div>
 </div>

@@ -1,31 +1,32 @@
-<article class="tweet p-3 d-flex border-top"onclick="location.href = '/<%=  tweet.author.userName %>/<%=  tweet.id %>'">
-  <div class="me-3 flex-shrink-0">
-    <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.userName + " Avatar" %> "
-    class="img-fluid user-image" />
-  </div>
-  <div class="flex-fill">
-    <div class="d-flex justify-content-between align-items-center">
+<article class="tweet p-3 d-flex border-top" onclick="location.href = '/<%=  tweet.author.userName %>/<%=  tweet.id %>'">
+   <div class="me-3 flex-shrink-0">
+      <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.userName + " Avatar" %> "
+         class="img-fluid user-image" />
+   </div>
+   <div class="flex-fill">
+   <div class="d-flex justify-content-between align-items-center">
       <a href="/<%= tweet.author.userName %>" class="fs-7 fw-bold text-black"
-        ><span class="hover-underline">
-          <%= tweet.author.firstName + " " + tweet.author.lastName %></span
-        >
-        <span class="fw-normal text-secondary ms-1">@<%= tweet.author.userName %> &middot;</span>
-        <span class="fw-normal text-secondary ms-1 hover-underline"> 1m</span>
+         ><span class="hover-underline">
+      <%= tweet.author.firstName + " " + tweet.author.lastName %></span
+         >
+      <span class="fw-normal text-secondary ms-1">@<%= tweet.author.userName %> &middot;</span>
+      <span class="fw-normal text-secondary ms-1 hover-underline"> 1m</span>
       </a>
-  </div>
-  <p class="fs-7 mb-0"><%= tweet.content %></p>
-  <div class="d-flex align-items-center justify-content-between tweet-actions">
-    <a class=" btn-like d-inline-flex align-items-center fs-7 <%#= tweet.likes.includes(user.id) ?
-    "liked" : null %> " href="/tweet/like/<%#= tweet.id %>" >
-    <div class="rounded-circle p-2 d-inline-flex justify-content-center align-items-center me-lg-1">
-      <svg viewBox="0 0 24 24">
-        <g>
-          <path
-            d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12z"
-          ></path>
-        </g>
-      </svg>
-    </div>
-    <span >40</span></a>
-  </div>
+   </div>
+   <p class="fs-7 mb-0"><%= tweet.content %></p>
+   <div class="d-flex align-items-center justify-content-between tweet-actions">
+      <a class=" btn-like d-inline-flex align-items-center fs-7 <%#= tweet.likes.includes(user.id) ?
+         "liked" : null %> " href="/tweet/like/<%#= tweet.id %>" >
+         <div class="rounded-circle p-2 d-inline-flex justify-content-center align-items-center me-lg-1">
+            <svg viewBox="0 0 24 24">
+               <g>
+                  <path
+                     d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12z"
+                     ></path>
+               </g>
+            </svg>
+         </div>
+         <span >40</span>
+      </a>
+   </div>
 </article>

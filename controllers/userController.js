@@ -10,16 +10,14 @@ async function index(req, res) {
 async function show(req, res) {
   
     const users = await User.find().limit(3);
-    const user = await User.findOne({ username: req.params.username }).populate({
-      path: "tweetList",
-      populate: {
-        path: "user",
-      },
-    });
-    if (user) {
-      return res.render("profilePage", { thisUser: user, users });
-    } 
-    return res.redirect("/home");
+    const user = await User.findOne({ userName: req.params.userName })
+    // .populate({
+    //   path: "tweetList",
+    //   populate: {
+    //     path: "user",
+    //   },
+    // });
+    return res.render("profilePage", { users, user });
 }
 // Show the form for creating a new resource
 async function create(req, res) {}
