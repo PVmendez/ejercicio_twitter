@@ -32,8 +32,10 @@
                <div class=" p-3 d-flex border-top flex-column">
                     <div class="d-flex flex-shrink-0">
                         <div class="me-2">
-                            <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.userName + " Avatar" %> "
+                            <a href="/<%= tweet.author.userName %> " >
+                                <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.userName + " Avatar" %> "
                             class="img-fluid user-image" />
+                            </a>
                         </div>
                         <div>
                             <a href="/<%= tweet.author.userName %>" class="fs-7 mt-1 fw-bold text-black d-flex flex-column">
