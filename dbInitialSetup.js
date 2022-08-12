@@ -3,8 +3,9 @@ const tweetSeeder = require("./seeders/tweetSeeder");
 const userSeeder = require("./seeders/userSeeder");
 
 module.exports = async () => {
-	db.connection;
-	await userSeeder();
-	await tweetSeeder();
-	console.log("[Database] Se han insertado los datos");
+  db.connection;
+
+  // await userSeeder();
+  await tweetSeeder();
+  console.log("[Database] Se han insertado los datos");
 };

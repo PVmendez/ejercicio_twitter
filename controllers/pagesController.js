@@ -12,7 +12,7 @@ async function home(req, res) {
  let users = await User.find().limit(50);
  users = _.sampleSize(users, 3);
  const tweets = await Tweet.find({})
-   .sort("-createdAt")
+   .sort({date: -1})
    .limit(20)
    .populate({
      path: "author",
