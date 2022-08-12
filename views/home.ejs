@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <%- include("partials/meta") %>
-      <title>Home / Twitter</title>
-   </head>
-   <body>
-      <section class="d-flex justify-content-center container-fluid">
-         <!-- Sidebar -->
-         <div class="left-sidebar d-flex justify-content-end"><%- include("partials/sidebar") %></div>
-         <!-- Main -->
-         <main class="border p-0">
-            <div
-               class="
+
+<head>
+  <%- include("partials/meta") %>
+    <title>Home / Twitter</title>
+</head>
+
+<body>
+  <section class="d-flex justify-content-center container-fluid">
+    <!-- Sidebar -->
+    <div class="left-sidebar d-flex justify-content-end">
+      <%- include("partials/sidebar") %>
+    </div>
+    <!-- Main -->
+    <main class="border p-0">
+      <div class="
                border-bottom
                px-3
                py-3
@@ -20,20 +23,24 @@
                justify-content-between
                sticky-top
                bg-white
-               "
-               >
-               <h2 class="fs-6 m-0 fw-bold">Home</h2>
-            </div>
-            <!-- Create Tweet Form -->
-            <%- include("partials/createTweet") %>
-            <div id="tweets-section">
-               <!-- Tweets -->
-               <% for(const tweet of tweets) { %> <%- include("partials/tweet", {tweet}) %> <% } %>
-            </div>
-         </main>
-         <!-- Right Column -->
-         <%- include("partials/rightSidebar.ejs") %>
-      </section>
-      <%- include("partials/scripts") %>
-   </body>
+               ">
+        <h2 class="fs-6 m-0 fw-bold">Home</h2>
+      </div>
+      <!-- Create Tweet Form -->
+      <%- include("partials/createTweet") %>
+        <div id="tweets-section">
+          <!-- Tweets -->
+
+
+          <% for(const tweet of tweets) { %>
+            <%- include("partials/tweet", {tweet}) %>
+              <% } %>
+        </div>
+    </main>
+    <!-- Right Column -->
+    <%- include("partials/rightSidebar.ejs") %>
+  </section>
+  <%- include("partials/scripts") %>
+</body>
+
 </html>
