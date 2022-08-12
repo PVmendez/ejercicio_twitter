@@ -184,6 +184,13 @@ hr {
   fill: none;
   transition: 1s;
 }
+
+.user:hover {
+  background-color: var(--bs-gray-200);
+  cursor: pointer;
+  border-radius: 0 0 20px 20px;
+}
+
 .tweet-actions a {
   text-decoration: none;
   color: var(--bs-gray-600);
@@ -376,6 +383,10 @@ form svg {
   position: absolute;
   right: 1rem;
   top: 1rem;
+}
+
+.modal-header.modalLikes {
+  justify-content: normal!important;
 }
 
 .btn-like.liked svg {

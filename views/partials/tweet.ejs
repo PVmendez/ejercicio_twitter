@@ -1,4 +1,4 @@
-<article <% console.log(tweet); %>
+<article 
   class="tweet p-3 d-flex border-bottom"
   onclick="location.href = '/<%= tweet.author.userName %>/<%= tweet.id %>'"
       >
@@ -13,7 +13,8 @@
             </span>
             <span class="fw-normal text-secondary ms-1">@<%= tweet.author.userName %> &middot; 1m</span>
           </a>
-          <div class="dropdown">
+          <% if (tweet.author._id.toString() === user._id.toString()) { %>
+           <div class="dropdown">
             <a onclick="event.stopPropagation();" data-bs-toggle="dropdown" aria-expanded="false"
               class="btn-soft rounded-circle d-inline-flex justify-content-center align-items-center p-1">
               <svg viewBox="0 0 24 24">
@@ -24,12 +25,10 @@
                 </g>
               </svg>
             </a>
-            <% if (tweet.author._id===user.id) { %>
               <div class="dropdown-menu dropdown-menu-end rounded-3 shadow bg-white border-0"
                 onclick="event.stopPropagation()">
-                <form action="/<%= tweet.author.userName %>/<%= tweet.id %>  " method="post"
+                <form action="/<%= tweet.author.userName %>/<%= tweet.id %>/delete" method="post"
                   enctype="application/x-www-form-urlencoded">
-                  <input type="hidden" name="_method" value="DELETE" />
                   <button type="submit" class="w-100 border-0 btn-gray fs-7 text-start p-2 d-flex align-items-center"
                     id="delete-btn">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -46,15 +45,12 @@
                   </button>
                 </form>
               </div>
-              <% } %>
           </div>
+          <% } %>
         </div>
         <p class="fs-7 my-0">
           <%= tweet.content %>
         </p>
-        <!-- <div class="border rounded-4">
-      <img src="/img/bob_marley.jpg" alt="" class="rounded-4 img-fluid w-100" />
-    </div> -->
         <div class="d-flex align-items-center justify-content-between tweet-actions">
           <!-- COMMENT -->
           <a href="#" class="btn-soft d-inline-flex align-items-center fs-7">
@@ -87,8 +83,12 @@
             </span>
           </a>
           <!-- LIKES  -->
-          <a class=" btn-like d-inline-flex align-items-center fs-7 <%#= tweet.likes.includes(user.id) ?
-    " liked" : null %> " href="/tweet/like/<%#= tweet.id %>" >
+          <% if (tweet.likes.filter((u) => u._id.toString() == user._id.toString()).length) {%> 
+          <a class=" btn-like liked d-inline-flex align-items-center fs-7 " href="/tweet/<%= tweet._id %>/dislike/" >
+          <% } else { %>
+          <a class=" btn-like d-inline-flex align-items-center fs-7 " href="/tweet/<%= tweet._id %>/like/" >
+          <%  } %>  
+            <!-- <a class=" btn-like d-inline-flex align-items-center fs-7" href="/tweet/<%=tweet._id %>/like/"> -->
               <div class="rounded-circle p-2 d-inline-flex justify-content-center align-items-center me-lg-1">
                 <svg viewBox="0 0 24 24">
                   <g>
@@ -98,7 +98,7 @@
                   </g>
                 </svg>
               </div>
-              <span class="likes-count">45<%= tweet.likes.length %></span>
+              <span class="likes-count"><%= tweet.likes.length %></span>
           </a>
           <!-- SHARE -->
           <a href="#" class="btn-soft d-inline-flex align-items-center fs-7">

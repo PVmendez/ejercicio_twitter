@@ -13,16 +13,19 @@ module.exports = async () => {
     tweets.push(
       new Tweet({
         content: faker.lorem.paragraph(),
-        date: faker.date.betweens(
-          "2011-01-01T00:00:00.000Z",
-          "2022-12-12T00:00:00.000Z"
-        ),
+        date: new Date(),
         author: _.sample(users),
-        likes: Math.floor(Math.random() * 10),
+        likes: [],
       })
     );
   }
+
+  for (xd of tweets) {
+    xd.likes.push(_.sample(users));
+  }
+
   await Tweet.collection.insertMany(tweets);
+
 
   for (const user of users) {
     const tweets = await Tweet.find({ user });

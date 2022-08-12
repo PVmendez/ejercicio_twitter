@@ -13,7 +13,7 @@ module.exports = async () => {
 			userName: faker.internet.userName(),
 			password: "password",
 			email: faker.internet.email(),
-			description: faker.lorem.paragraph(),
+			description: faker.lorem.sentence(5),
 			profilePhoto: faker.internet.avatar(),
 		});
 	}
