@@ -9,10 +9,6 @@ const userSchema = new Schema({
   email: String,
   description: String,
   profilePhoto: String,
-  tweetList: {
-    type: Schema.Types.ObjectId,
-    ref: "Tweet",
-  },
   followerList: [
     {
       id: {
@@ -29,30 +25,14 @@ const userSchema = new Schema({
       },
     },
   ],
-	firstName: String,
-	lastName: String,
-	userName: String,
-	password: String,
-	email: String,
-	description: String,
-	profilePhoto: String,
-	tweetList: [String],
-	followerList: [
-		{
-			id: {
-				type: mongoose.Schema.ObjectId,
-				ref: "User",
-			},
-		},
-	],
-	followingList: [
-		{
-			id: {
-				type: mongoose.Schema.ObjectId,
-				ref: "User",
-			},
-		},
-	],
+  tweetsList: [
+    {
+      id: {
+        type: Schema.Types.ObjectId,
+        ref: "Tweet",
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", userSchema);
