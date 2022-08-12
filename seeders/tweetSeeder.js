@@ -28,5 +28,5 @@ module.exports = async () => {
     const tweets = await Tweet.find({ user });
     user.tweets = tweets;
     await user.save();
-  }
-};
+  };
+}

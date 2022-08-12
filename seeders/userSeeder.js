@@ -21,10 +21,10 @@ module.exports = async () => {
 	User.collection.insertMany(users);
 
 	const usersFollows = await User.find();
-	const usersFollowers = await User.find().limit(5);
+	const usersFollowers = await User.find().limit(10);
 
 	for (const user of usersFollows) {
-		const followList = usersFollowers.filter((u) => user._id !== u._id);
+		const followList = usersFollowers.filter((u) => user._id.toString() != u._id.toString());
 		user.followingList = followList;
 		user.followerList = followList;
 		await user.save();
