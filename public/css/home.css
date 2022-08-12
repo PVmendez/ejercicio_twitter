@@ -400,6 +400,10 @@ form svg {
   text-align: start;
 }
 
+.actions-singleTweet {
+  margin-left: none!important;
+  max-width: none!important;
+}
 
 
 @keyframes fadeIn {
