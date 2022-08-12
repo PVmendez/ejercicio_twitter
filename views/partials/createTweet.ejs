@@ -9,17 +9,13 @@
   </div>
   <div class="flex-fill overflow-auto">
     <div class="tweet-content overflow-auto">
-      <div
-        id="new-tweet-content"
-        class="py-2 ps-2 text-break"
-        style="width: 100%"
-        contentEditable="true"
-        placeholder="What's happening?"
-      ></div>
+      <div id="new-tweet-content">
+        <textarea spellcheck="false" class="w-100" style="resize: none; border:none" maxlength="140" rows="3"></textarea>
+      </div>
     </div>
-    <hr class="mt-2 mb-0" />
+    <hr class="mt-0 mb-0" />
     <div class="form-footer pt-2 d-flex justify-content-between align-items-end">
-      <div class="d-inline-block">
+      <!-- <div class="d-inline-block">
         <a
           href="#"
           class="
@@ -133,7 +129,7 @@
             </g>
           </svg>
         </a>
-      </div>
+      </div> -->
       <button
         class="py-2 px-3 btn-primary rounded-pill fw-bold fs-7 border-0"
         id="tweet-post"
