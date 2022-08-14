@@ -48,14 +48,22 @@
                <div class="mt-2 pb-3 border-bottom">
                   <p class="fs-7 mb-0"><%= tweet.content %></p>
                </div>
-               <div class="mt-2 pb-3 border-bottom d-flex align-items-center">
-                  <span class="text-muted fs-7 me-2">
-                  <span class="text-black fw-bold" id="following-count">
-                  40
-                  </span>
-                  Me gusta
-                  </span>
+               <% if (tweet.likes.length) { %>
+                <div class="mt-2 pb-3 border-bottom d-flex align-items-center">
+                   <a
+                     type="button"
+                     data-bs-toggle="modal"
+                     data-bs-target="#showLikesModal"
+                     >
+                        <span class="text-muted fs-7 me-2">
+                        <span class="text-black fw-bold" id="following-count">
+                           <%= tweet.likes.length %> 
+                        </span>
+                        Me gusta
+                        </span>
+                  </a>
                </div>
+               <% } %>
                <div class="border-bottom ">
                 <div class="d-flex align-items-center justify-content-around tweet-actions actions-singleTweet">
                   <!-- COMMENT -->
@@ -93,8 +101,11 @@
                   </a
                      >
                   <!-- LIKES  -->
-                  <a class=" btn-like d-inline-flex align-items-center fs-7 <%#= tweet.likes.includes(user.id) ?
-                     "liked" : null %> " href="/tweet/like/<%#= tweet.id %>" >
+                  <% if (tweet.likes.filter((u) => u._id.toString() == user._id.toString()).length != 0) {%> 
+                  <a class=" btn-like liked d-inline-flex align-items-center fs-7 " href="/tweet/<%= tweet._id %>/dislike/" >
+                  <% } else { %>
+                  <a class=" btn-like d-inline-flex align-items-center fs-7 " href="/tweet/<%= tweet._id %>/like/" >
+                  <%  } %>  
                      <div class="rounded-circle p-2 d-inline-flex justify-content-center align-items-center me-lg-1">
                         <svg viewBox="0 0 24 24">
                            <g>
@@ -104,7 +115,7 @@
                            </g>
                         </svg>
                      </div>
-                     <span class="likes-count">45<%= tweet.likes.length %></span>
+                     <span class="likes-count"><%= tweet.likes.length %></span>
                   </a>
                   <!-- SHARE -->
                   <a href="#" class="btn-soft d-inline-flex align-items-center fs-7"
@@ -136,3 +147,4 @@
       <%- include("partials/scripts") %>
    </body>
 </html>
+ <%- include("showLikesModal")%> 

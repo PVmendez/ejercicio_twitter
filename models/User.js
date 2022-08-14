@@ -6,10 +6,20 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   userName: String,
+  password: String,
   email: String,
   password: String,
   description: String,
-  profilePhoto: String,
+  profilePhoto: {
+    type: String,
+    default: "/img/defaultPhoto.png",
+  },
+  tweetList: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Tweet",
+    },
+  ],
   followerList: [
     {
       id: {
@@ -23,14 +33,6 @@ const userSchema = new Schema({
       id: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
-      },
-    },
-  ],
-  tweetsList: [
-    {
-      id: {
-        type: Schema.Types.ObjectId,
-        ref: "Tweet",
       },
     },
   ],
