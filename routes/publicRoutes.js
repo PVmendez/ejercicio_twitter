@@ -4,25 +4,34 @@ const checkAuthentication = require("../middlewares/checkAuthentication");
 const pagesController = require("../controllers/pagesController");
 const passport = require("passport");
 
-
 publicRouter.get("/", pagesController.landing);
 publicRouter.get("/home", checkAuthentication, pagesController.home);
 
 publicRouter.get("/login", pagesController.login);
-publicRouter.post("/login",
+publicRouter.post(
+  "/login",
   passport.authenticate("login", {
     successRedirect: "/home",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
   })
 );
 
 publicRouter.get("/register", pagesController.register);
-publicRouter.post("/register",
+publicRouter.post(
+  "/register",
   passport.authenticate("register", {
     successRedirect: "/home",
     failureRedirect: "/register",
   })
 );
 
+publicRouter.get("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 module.exports = publicRouter;

@@ -2,22 +2,19 @@ const { User, Tweet } = require("../models");
 const _ = require("lodash");
 
 // Display a listing of the resource.
-async function index(req, res) {
-  
-}
+async function index(req, res) {}
 
 // Display the specified resource.
 async function show(req, res) {
-  
-    const users = await User.find().limit(3);
-    const user = await User.findOne({ userName: req.params.userName })
-    // .populate({
-    //   path: "tweetList",
-    //   populate: {
-    //     path: "user",
-    //   },
-    // });
-    return res.render("profilePage", { users, user });
+  const users = await User.find().limit(3);
+  const user = await User.findOne({ userName: req.params.userName }).populate({
+    path: "tweetList",
+    populate: {
+      path: "author",
+    },
+  });
+  console.log(user);
+  return res.render("profilePage", { users, user });
 }
 // Show the form for creating a new resource
 async function create(req, res) {}

@@ -129,7 +129,7 @@
       </li>
       <li class="nav-item mb-2">
         <a
-          href="/<%= user.userName %> "
+          href="/user/<%= user.userName %> "
           class="btn text-dark rounded-pill btn-gray d-flex justify-content-center align-items-center"
         >
           <svg
@@ -245,7 +245,7 @@
       <hr class="mb-0" />
       <div class="list-group">
         <a class="btn-gray fs-7 px-2 py-3 text-dark">Add an existing account</a>
-        <form action="/logout" method="POST">
+        <form action="/logout" method="get">
           <button type="submit" class="w-100 btn-gray fs-7 px-2 py-3 text-dark">
             Log out @<%= user.userName %>
           </button>
