@@ -8,7 +8,6 @@ module.exports = async () => {
   await Tweet.collection.deleteMany({});
   const users = await User.find();
   const tweets = [];
-  const date = new Date();
 
   for (let i = 0; i < 10; i++) {
     tweets.push(
@@ -21,20 +20,19 @@ module.exports = async () => {
     );
   }
 
-  for (tweet of tweets) {
+  for (const tweet of tweets) {
     tweet.likes.push(_.sample(users));
   }
 
   await Tweet.collection.insertMany(tweets);
 
   for (const user of users) {
-    const random = Math.floor(Math.random() * 10);
-    const tweets = await Tweet.find().limit(random);
+    const tweets = await Tweet.find().limit(2);
     for (const tweet of tweets) {
       const userTweets = tweets.filter(
         (t) => tweet._id.toString() != t._id.toString()
       );
-      user.tweetsList = userTweets;
+      user.tweetList = userTweets;
       await user.save();
     }
   }
