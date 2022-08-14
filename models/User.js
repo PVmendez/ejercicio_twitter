@@ -15,24 +15,20 @@ const userSchema = new Schema({
   },
   tweetList: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.ObjectId,
       ref: "Tweet",
     },
   ],
   followerList: [
     {
-      id: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-      },
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
   ],
   followingList: [
     {
-      id: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-      },
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
   ],
 });
