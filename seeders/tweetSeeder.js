@@ -22,7 +22,7 @@ module.exports = async () => {
 
   for (const user of users) {
     const random = Math.floor(Math.random() * 10);
-    const tweets = await Tweet.find().limit(random);
+    const tweets = await Tweet.find().limit(2);
     
     for (const tweet of tweets) {
       const userTweets = tweets.filter((t) => tweet._id.toString() != t._id.toString());
