@@ -21,7 +21,7 @@ module.exports = async () => {
 	User.collection.insertMany(users);
 
 	const usersFollows = await User.find();
-	const usersFollowers = await User.find().limit(10);
+	const usersFollowers = await User.find().limit(2);
 
 	for (const user of usersFollows) {
 		const followList = usersFollowers.filter((u) => user._id.toString() != u._id.toString());
@@ -29,4 +29,6 @@ module.exports = async () => {
 		user.followerList = followList;
 		await user.save();
 	}
+
+  console.log("[Database] Se corrió el seeder de User.");
 };
