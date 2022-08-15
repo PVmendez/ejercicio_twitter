@@ -1,9 +1,6 @@
 const { User, Tweet } = require("../models");
 const _ = require("lodash");
 
-// Display a listing of the resource.
-async function index(req, res) {}
-
 // Display the specified resource.
 async function show(req, res) {
 	  const suggestedUsers = await User.find({
@@ -23,13 +20,17 @@ async function show(req, res) {
 }
 
 async function follow(req, res) {
+  //Vas a la base de datos y te traes el usuario que queres seguir
 	const user = await User.findOne({ _id: req.params.id });
+  //Te agregas a vos a su lista de seguidores
 	user.followerList.push(req.user);
 	user.save();
 
+  //Te buscas a vos en la base de datos
 	await User.findOneAndUpdate(
 		{ _id: req.user._id },
 		{
+      //Lo agregas a el a tu lista de followings
 			$push: { followingList: user },
 		}
 	);
@@ -37,26 +38,29 @@ async function follow(req, res) {
 }
 
 async function unfollow(req, res) {
-	await User.findOneAndUpdate(
-		{ _id: req.params.id },
-		{
-			$pull: { followerList: req.user._id },
-		}
-	);
+  //Vas a la base de datos y te traes el usuario que queres dejar de seguir
+  await User.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      //Te sacas a vos (req.user) de su lista de followers
+      $pull: { followerList: req.user._id },
+    }
+  );
 
-	const user = await User.findOne({ _id: req.params.id });
-	await User.findOneAndUpdate(
-		{ _id: req.user._id },
-		{
-			$pull: { followingList: user._id },
-		}
-	);
+  //Vas a la base de datos y te traes el usuario que matchea con tu usuario (req.user)
+  const user = await User.findOne({ _id: req.params.id });
+  await User.findOneAndUpdate(
+    { _id: req.user._id },
+    {
+      //Lo sacas a el de tu following list
+      $pull: { followingList: user._id },
+    }
+  );
 
-	res.redirect("back");
+  res.redirect("back");
 }
 
 async function showFollowers(req, res) {
-	// const followerUsers = await User.find({ $in: req.user._id.followerList });
 
   const user = await User.findOne({ _id: req.params.id }).populate("followerList");
 	const followerUsers = await User.find({_id: {$in: user.followerList}})
@@ -69,7 +73,6 @@ async function showFollowers(req, res) {
 }
 
 async function showFollowing(req, res) {
-	// const followingUsers = await User.find({ $in: req.body.id.followingList });
 	const user = await User.findOne({ _id: req.params.id }).populate(
     "followingList"
   );
@@ -86,15 +89,10 @@ async function search(req, res) {
 }
 
 module.exports = {
-	index,
 	show,
 	follow,
 	unfollow,
 	showFollowers,
 	showFollowing,
-	index,
-	show,
-	follow,
-	unfollow,
 	search,
 };

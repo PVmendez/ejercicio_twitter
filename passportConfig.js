@@ -41,10 +41,12 @@ module.exports = (app) => {
       },
       function (req, username, email, done) {
         User.findOne(
+          // Te fijas si en la base ya existe algun usuario con ese usuario o con ese email
           { $or: [{ userName: username }, { email: email }] },
           function (err, user) {
             if (err) return done(err);
             if (!user) {
+              // En caso de que no exista, lo creas y lo guardas en la base
               const user = new User({
                 userName: req.body.username,
                 email: req.body.email,
