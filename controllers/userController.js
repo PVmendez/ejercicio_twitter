@@ -14,7 +14,8 @@ async function show(req, res) {
         path: "author",
       },
     })
-    .populate("followerList");
+    .populate("followerList")
+    .sort([["date"]]);
 
 	return res.render("profilePage", { suggestedUsers, user, authUser: req.user });
 }

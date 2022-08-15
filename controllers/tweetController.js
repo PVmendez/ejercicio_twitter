@@ -14,12 +14,19 @@ async function show(req, res) {
 }
 
 async function store(req, res) {
+
+
   const tweet = new Tweet({
     content: req.body.tweetContent,
     date: new Date(),
     author: req.user,
     likes: [],
   });
+
+  await User.findByIdAndUpdate(req.user._id, {
+    $push: { tweetList: tweet },
+  });
+
   await tweet.save();
   res.redirect("/home");
 }
