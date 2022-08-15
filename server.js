@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const routes = require("./routes");
 const passportConfig = require("./passportConfig");
-const localVariable = require("./middlewares/localVariables");
 const dbInitialSetup = require("./dbInitialSetup");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
@@ -14,7 +13,6 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 passportConfig(app);
-app.use(localVariable);
 
 routes(app);
 dbInitialSetup();

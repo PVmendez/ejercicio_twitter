@@ -56,9 +56,11 @@ async function unfollow(req, res) {
 }
 
 async function showFollowers(req, res) {
-	// const followerUsers = await User.find({ $in: req.user.id.followerList });
+	// const followerUsers = await User.find({ $in: req.user._id.followerList });
+
   const user = await User.findOne({ _id: req.params.id }).populate("followerList");
 	const followerUsers = await User.find({_id: {$in: user.followerList}})
+
 	const suggestedUsers = await User.find({
       _id: { $nin: req.user.followingList },
     });
