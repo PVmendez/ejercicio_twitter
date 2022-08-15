@@ -6,7 +6,7 @@ async function index(req, res) {}
 
 // Display the specified resource.
 async function show(req, res) {
-  const users = await User.find().limit(3);
+  const users = await User.find();
   const user = await User.findOne({ userName: req.params.userName }).populate({
     path: "tweetList",
     populate: {
@@ -54,9 +54,15 @@ async function unfollow(req, res) {
   res.redirect("back");
 }
 
+async function search(req, res) {
+  console.log(req.params);
+  return res.redirect("/user/" + req.query.search);
+}
+
 module.exports = {
   index,
   show,
   follow,
   unfollow,
+  search,
 };

@@ -9,7 +9,7 @@ const tweetSchema = new Schema({
   },
   date: Date,
   author: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.ObjectId,
     ref: "User",
   },
   likes: [
