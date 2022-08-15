@@ -28,7 +28,11 @@ module.exports = async () => {
   //Recorres todos los usuarios
   for (let i = 0; i < users.length; i++) {
     //A cada usuario, le asignas un tweet
-    users[i].tweetList.push(tweets[i]);
+    // users[i].tweetList.push(tweets[i]);
+        await User.findOneAndUpdate(
+          { _id: users[i]._id },
+          { $push: { tweetList: tweets[i] } }
+        );
     //A ese tweet que asignas, le asignas el usuario como autor
     await Tweet.findOneAndUpdate({ _id: tweets[i]._id }, { author: users[i] });
   }
