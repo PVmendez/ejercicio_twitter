@@ -13,7 +13,6 @@ async function show(req, res) {
       path: "author",
     },
   });
-  console.log(user);
   return res.render("profilePage", { users, user });
 }
 // Show the form for creating a new resource

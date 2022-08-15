@@ -21,7 +21,7 @@ module.exports = async () => {
 	User.collection.insertMany(users);
 
 	const usersFollows = await User.find();
-	const usersFollowers = await User.find().limit(2);
+	const usersFollowers = await User.find().limit(5);
 
 	for (const user of usersFollows) {
 		const followList = usersFollowers.filter((u) => user._id.toString() != u._id.toString());

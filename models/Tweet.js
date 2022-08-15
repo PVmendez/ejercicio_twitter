@@ -18,6 +18,8 @@ const tweetSchema = new Schema({
       ref: "User",
     },
   ],
-});
+},
+{ timestamps: true },
+);
 
 module.exports = mongoose.model("Tweet", tweetSchema);
