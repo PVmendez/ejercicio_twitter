@@ -8,20 +8,14 @@ async function landing(req, res) {
 }
 
 async function home(req, res) {
+  const user = req.user;
   let users = await User.find();
-  const tweets = await Tweet.find({
-    $or: [
-      {
-        author: { $in: req.user.followingList },
-      },
-      { userName: req.user.userName },
-    ],
-  })
-    .sort([["date", -1]])
+  const tweets = await Tweet.find({ author: { $in: req.user.followingList } })
+    .sort("date")
     .populate({
       path: "author",
     });
-  res.render("home", { user: req.user, tweets, users });
+  res.render("home", { user, tweets, users });
 }
 
 async function register(req, res) {
