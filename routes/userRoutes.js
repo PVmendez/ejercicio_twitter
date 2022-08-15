@@ -13,8 +13,8 @@ userRouter.get("/tweet/:tweetId/dislike", tweetController.dislike);
 
 userRouter.get("/user/:userName", userController.show);
 userRouter.get("/user", userController.search);
-userRouter.post("/:userName/follow", userController.follow);
-userRouter.post("/:userName/unfollow", userController.unfollow);
+userRouter.post("/follow/:id", userController.follow);
+userRouter.post("/follow/:id", userController.unfollow);
 
 userRouter.get("/:userName/:tweetId", tweetController.show);
 userRouter.post("/:userName/:tweetId/delete", tweetController.destroy);

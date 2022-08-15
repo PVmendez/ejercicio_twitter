@@ -42,6 +42,9 @@ const userSchema = new Schema({
       ref: "User",
     },
   ],
+  coverPhoto: {
+    type: String,
+  },
 });
 
 // userSchema.pre("save", async function (next) {

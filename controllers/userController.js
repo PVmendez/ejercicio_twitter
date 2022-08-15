@@ -7,6 +7,7 @@ async function index(req, res) {}
 // Display the specified resource.
 async function show(req, res) {
   const users = await User.find();
+  const authUser = req.user;
   const user = await User.findOne({ userName: req.params.userName }).populate({
     path: "tweetList",
     populate: {
@@ -14,20 +15,20 @@ async function show(req, res) {
     },
   });
 
-  return res.render("profilePage", { users, user });
+  return res.render("profilePage", { users, user, authUser });
 }
 
 async function follow(req, res) {
   await User.findOneAndUpdate(
-    { userName: req.params.userName },
+    { id: req.params.id },
     {
       $push: { followerList: req.user },
     }
   );
 
-  const user = await User.findOne({ userName: req.params.userName });
+  const user = await User.findOne({ id: req.params.id });
   await User.findOneAndUpdate(
-    { userName: req.user.userName },
+    { id: req.user.id },
     {
       $push: { followingList: user },
     }
@@ -37,7 +38,7 @@ async function follow(req, res) {
 
 async function unfollow(req, res) {
   await User.findOneAndUpdate(
-    { userName: req.params.userName },
+    { id: req.params.id },
     {
       $pull: { followerList: req.user._id },
     }
@@ -45,7 +46,7 @@ async function unfollow(req, res) {
 
   const user = await User.findOne({ userName: req.params.userName });
   await User.findOneAndUpdate(
-    { userName: req.user.userName },
+    { id: req.user.id },
     {
       $pull: { followingList: user._id },
     }
@@ -55,7 +56,6 @@ async function unfollow(req, res) {
 }
 
 async function search(req, res) {
-  console.log(req.params);
   return res.redirect("/user/" + req.query.search);
 }
 

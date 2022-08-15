@@ -15,6 +15,7 @@ module.exports = async () => {
       email: faker.internet.email(),
       description: faker.lorem.sentence(5),
       profilePhoto: faker.internet.avatar(),
+      coverPhoto: faker.image.abstract(),
     });
   }
 
