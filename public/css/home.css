@@ -345,8 +345,7 @@ form svg {
 }
 
 #profile-info {
-  position: relative;
-  top: -4rem;
+  margin-top: -4rem;
 }
 
 #profile-info .rounded-circle {

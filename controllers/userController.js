@@ -6,7 +6,10 @@ async function index(req, res) {}
 
 // Display the specified resource.
 async function show(req, res) {
-  const users = await User.find();
+    const suggestedUsers = await User.find({
+      _id: { $nin: req.user.followingList },
+    });
+    
   const authUser = req.user;
   const user = await User.findOne({ userName: req.params.userName }).populate({
     path: "tweetList",
@@ -15,20 +18,16 @@ async function show(req, res) {
     },
   });
 
-  return res.render("profilePage", { users, user, authUser });
+  return res.render("profilePage", { suggestedUsers, user, authUser });
 }
 
 async function follow(req, res) {
-  await User.findOneAndUpdate(
-    { id: req.params.id },
-    {
-      $push: { followerList: req.user },
-    }
-  );
+  const user = await User.findOne({ _id: req.params.id });
+  user.followerList.push(req.user);
+  user.save();
 
-  const user = await User.findOne({ id: req.params.id });
   await User.findOneAndUpdate(
-    { id: req.user.id },
+    { _id: req.user._id },
     {
       $push: { followingList: user },
     }
@@ -38,15 +37,15 @@ async function follow(req, res) {
 
 async function unfollow(req, res) {
   await User.findOneAndUpdate(
-    { id: req.params.id },
+    { _id: req.params.id },
     {
       $pull: { followerList: req.user._id },
     }
   );
 
-  const user = await User.findOne({ userName: req.params.userName });
+  const user = await User.findOne({ _id: req.params.id });
   await User.findOneAndUpdate(
-    { id: req.user.id },
+    { _id: req.user._id },
     {
       $pull: { followingList: user._id },
     }

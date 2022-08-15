@@ -8,14 +8,21 @@ async function landing(req, res) {
 }
 
 async function home(req, res) {
-  const user = req.user;
-  let users = await User.find();
-  const tweets = await Tweet.find({ author: { $in: req.user.followingList } })
-    .sort("date")
-    .populate({
-      path: "author",
+  const suggestedUsers = await User.find({
+    _id: { $nin: req.user.followingList } });
+
+  const allTweets = await Tweet.find().populate("author");
+  const filteredTweets = allTweets
+    .filter(
+      (tweet) =>
+        req.user.followingList.includes(tweet.author._id) ||
+        tweet.author.userName === req.user.userName
+    )
+    .sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
     });
-  res.render("home", { user, tweets, users });
+
+  res.render("home", { user: req.user, tweets:filteredTweets, suggestedUsers});
 }
 
 async function register(req, res) {
@@ -26,9 +33,19 @@ async function login(req, res) {
   res.render("login");
 }
 
+async function logout(req,res) {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+}
+
 module.exports = {
   landing,
   home,
   register,
   login,
+  logout
 };

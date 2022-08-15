@@ -5,9 +5,12 @@ async function show(req, res) {
   const tweet = await Tweet.findById(req.params.tweetId)
     .populate("author")
     .populate("likes");
-  const users = await User.find().limit(3);
 
-  res.render("showTweet", { tweet, users });
+    const suggestedUsers = await User.find({
+      _id: { $nin: req.user.followingList },
+    });
+
+  res.render("showTweet", { tweet, suggestedUsers });
 }
 
 async function store(req, res) {

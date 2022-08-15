@@ -25,13 +25,6 @@ publicRouter.post(
   })
 );
 
-publicRouter.get("/logout", (req, res) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
-});
+publicRouter.get("/logout", pagesController.logout);
 
 module.exports = publicRouter;

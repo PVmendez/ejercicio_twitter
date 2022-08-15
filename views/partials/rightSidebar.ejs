@@ -79,31 +79,37 @@
                <h6 class="m-0">Who to follow</h6>
             </div>
             <ul class="p-0 m-0">
-               <% let count = 0; %> 
-               <% for( const thisUser of users ) { %>
-                     <% if (!user.followingList.includes(thisUser.id) && count < 3) {%> 
-                        <% count++; %> 
-                        <li class="d-flex py-2 px-3 align-items-center trend-item"
-                           onclick="location.href = '/user/<%= thisUser.userName %>'">
-                           <div class="px-1">
-                              <img src="<%= thisUser.profilePhoto %> " alt="..." style="width: 2rem"
-                                 class="bg-info rounded-circle" />
-                           </div>
-                           <div class="d-flex flex-column justify-content-center px-1">
-                              <a class="fw-bold fs-7 my-1 text-black">
-                                 <%= thisUser.firstName + " " + thisUser.lastName %>
-                              </a>
-                              <p class="text-muted m-0 fs-7">@<%= thisUser.userName %>
-                              </p>
-                           </div>
-                           <div class="flex-grow-1 text-end">
-                              <% console.log(thisUser) %> 
-                              <a href="/follow/<%= thisUser.id %>" class="unfollow px-3 py-2 fw-bold fs-7
-                              rounded-pill <%= user.followingList.includes(thisUser.id) ? null : " d-none" %>"></a> <a
-                              href="/follow/<%= thisUser.id %>" class="follow px-3 py-2 fw-bold fs-7
-                              rounded-pill <%= user.followingList.includes(thisUser.id) ? " d-none" : null %>" >Follow</a>
-                           </div>
-                        </li>
+               <% for( const thisUser of suggestedUsers ) { %>
+                  <% if (thisUser._id.toString() != user._id.toString()) {%> 
+                  <li class="d-flex py-2 px-3 align-items-center trend-item"
+                     onclick="location.href = '/user/<%= thisUser.userName %>'">
+                     <div class="px-1">
+                        <img src="<%= thisUser.profilePhoto %> " alt="..." style="width: 2rem"
+                           class="bg-info rounded-circle" />
+                     </div>
+                     <div class="d-flex flex-column justify-content-center px-1">
+                        <a class="fw-bold fs-7 my-1 text-black">
+                        <%= thisUser.firstName + " " + thisUser.lastName %>
+                        </a>
+                        <p class="text-muted m-0 fs-7">@<%= thisUser.userName %>
+                        </p>
+                     </div>
+                     <div class="flex-grow-1 text-end">
+                        <% if (thisUser.followerList.includes(user._id)){ %>
+                        <form action="/<%= thisUser._id %>/unfollow" method="POST">
+                           <button type="submit" class="btn btn-dark text-white rounded-4">
+                           Unfollow
+                           </button>
+                        </form>
+                        <% } else { %>
+                        <form action="/<%= thisUser._id %>/follow" method="POST">
+                           <button type="submit" class="btn btn-dark text-white rounded-4">
+                           Follow
+                           </button>
+                        </form>
+                        <% } %>
+                     </div>
+                  </li>
                   <% } %>
                <% } %>
             </ul>
