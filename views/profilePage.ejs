@@ -84,16 +84,21 @@
                      </a>
                      
                      <% } else { %> 
+                        <% if (user.followerList.includes(authUser._id)){ %>
                         <form action="/<%= user._id %>/unfollow" method="POST">
-                           <button type="submit" class="btn btn-dark text-white rounded-4 <%= user.followingList.includes(authUser._id) ? null : " d-none" %>">
-                              Unfollow
+                           <button type="submit" class="btn btn-dark text-white rounded-4">
+                           Unfollow
                            </button>
                         </form>
+                        <% } else { %>
                         <form action="/<%= user._id %>/follow" method="POST">
-                           <button type="submit" class="btn btn-dark text-white rounded-4  <%= user.followingList.includes(authUser._id) ? " d-none" : null %>">
-                              Follow
+                           <button type="submit" class="btn btn-dark text-white rounded-4">
+                           Follow
                            </button>
-                  <% } %>
+                        </form>
+                        <% } %>
+                     </div>
+                     <% } %>
                </div>
             </div>
             <div class="d-flex" id="profile-nav">
