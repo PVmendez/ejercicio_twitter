@@ -6,19 +6,15 @@ async function index(req, res) {}
 
 // Display the specified resource.
 async function show(req, res) {
-  const suggestedUsers = await User.find({
-    _id: { $in: req.user.followingList },
-  });
-  
-const authUser = req.user;
-const user = await User.findOne({ userName: req.params.userName }).populate({
-  path: "tweetList",
-  populate: {
-    path: "author",
-  },
-});
+	const users = await User.find().limit(3);
+	const user = await User.findOne({ userName: req.params.userName }).populate({
+		path: "tweetList",
+		populate: {
+			path: "author",
+		},
+	});
 
-return res.render("profilePage", { suggestedUsers, user, authUser });
+	return res.render("profilePage", { users, user });
 }
 
 async function follow(req, res) {
@@ -59,6 +55,12 @@ async function unfollow(req, res) {
 	});
 
 	const authUser = req.user;
+	const user = await User.findOne({ userName: req.params.userName }).populate({
+		path: "tweetList",
+		populate: {
+			path: "author",
+		},
+	});
 
 	return res.render("profilePage", { suggestedUsers, user, authUser });
 }
@@ -97,15 +99,29 @@ async function unfollow(req, res) {
 }
 
 async function showFollowers(req, res) {
-	const followerUsers = await User.find({ $in: req.user.followerList });
-	const users = await User.find().limit(3);
-	return res.render("showFollowers", { followerUsers, users });
+	// const followerUsers = await User.find({ $in: req.user._id.followerList });
+
+  const user = await User.findOne({ _id: req.params.id }).populate("followerList");
+	const followerUsers = await User.find({_id: {$in: user.followerList}})
+
+	const suggestedUsers = await User.find({
+      _id: { $nin: req.user.followingList },
+    });
+
+	return res.render("showFollowers", { followerUsers, suggestedUsers });
 }
 
 async function showFollowing(req, res) {
-	const followingUsers = await User.find({ $in: req.user.followingList });
-	const users = await User.find().limit(3);
-	return res.render("showFollowing", { followingUsers, users });
+	// const followingUsers = await User.find({ $in: req.body.id.followingList });
+	const user = await User.findOne({ _id: req.params.id }).populate(
+    "followingList"
+  );
+  const followingUsers = await User.find({ _id: { $in: user.followingList } });
+	  const suggestedUsers = await User.find({
+      _id: { $nin: req.user.followingList },
+    });
+
+	return res.render("showFollowing", { followingUsers, suggestedUsers });
 }
 
 async function search(req, res) {

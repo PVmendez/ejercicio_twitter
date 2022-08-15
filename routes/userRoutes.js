@@ -13,11 +13,12 @@ userRouter.get("/tweet/:tweetId/dislike", tweetController.dislike);
 
 userRouter.get("/user/:userName", userController.show);
 userRouter.get("/user", userController.search);
+
 userRouter.post("/:id/follow/", userController.follow);
 userRouter.post("/:id/unfollow/", userController.unfollow);
 
-userRouter.get("/:userName/followers", userController.showFollowers);
-userRouter.get("/:userName/following", userController.showFollowing);
+userRouter.get("/:id/followers", userController.showFollowers);
+userRouter.get("/:id/following", userController.showFollowing);
 
 userRouter.get("/:userName/:tweetId", tweetController.show);
 userRouter.post("/:userName/:tweetId/delete", tweetController.destroy);
