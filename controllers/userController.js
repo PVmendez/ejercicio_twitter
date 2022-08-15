@@ -13,32 +13,50 @@ async function show(req, res) {
       path: "author",
     },
   });
+
   return res.render("profilePage", { users, user });
 }
-// Show the form for creating a new resource
-async function create(req, res) {}
 
-// Store a newly created resource in storage.
-async function store(req, res) {}
+async function follow(req, res) {
+  await User.findOneAndUpdate(
+    { userName: req.params.userName },
+    {
+      $push: { followerList: req.user },
+    }
+  );
 
-// Show the form for editing the specified resource.
-async function edit(req, res) {}
+  const user = await User.findOne({ userName: req.params.userName });
+  await User.findOneAndUpdate(
+    { userName: req.user.userName },
+    {
+      $push: { followingList: user },
+    }
+  );
+  res.redirect("back");
+}
 
-// Update the specified resource in storage.
-async function update(req, res) {}
+async function unfollow(req, res) {
+  await User.findOneAndUpdate(
+    { userName: req.params.userName },
+    {
+      $pull: { followerList: req.user._id },
+    }
+  );
 
-// Remove the specified resource from storage.
-async function destroy(req, res) {}
+  const user = await User.findOne({ userName: req.params.userName });
+  await User.findOneAndUpdate(
+    { userName: req.user.userName },
+    {
+      $pull: { followingList: user._id },
+    }
+  );
 
-// Otros handlers...
-// ...
+  res.redirect("back");
+}
 
 module.exports = {
   index,
   show,
-  create,
-  store,
-  edit,
-  update,
-  destroy,
+  follow,
+  unfollow,
 };

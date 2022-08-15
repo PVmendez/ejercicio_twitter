@@ -19,39 +19,47 @@
         </div>
       </div>
       <!--  Contenido -->
-      <% for (user of tweet.likes) {%>
+      <% for (userLike of tweet.likes) {%>
       <div
         class="user p-3 d-flex align-items-center"
-        onclick="location.href ='/<%=user.userName %>/'"
+        onclick="location.href ='/<%=userLike.userName %>/'"
       >
         <div class="me-3 flex-shrink-0">
-          <img src="<%= user.profilePhoto %>" alt="<%= user.userName + " Avatar"
+          <img src="<%= userLike.profilePhoto %>" alt="<%= userLike.userName + " Avatar"
           %> " class="img-fluid user-image" />
         </div>
         <div class="flex-fill">
           <div>
             <a
-              href="/<%= user.userdName %>"
+              href="/<%= userLike.userdName %>"
               class="fs-7 d-flex flex-column fw-bold m-0 text-black"
             >
               <span class="hover-underline mb-0">
-                <%= user.firstName + " " + user.lastName %>
+                <%= userLike.firstName + " " + userLike.lastName %>
               </span>
               <span class="fw-normal text-secondary"
-                >@<%= user.userName %></span
+                >@<%= userLike.userName %></span
               >
             </a>
           </div>
           <div>
-            <p class="fs-7"><%= user.description %></p>
+            <p class="fs-7"><%= userLike.description %></p>
           </div>
         </div>
         <div>
-          <form action="/<%=user.userName%>/follow ">
-            <button type="submit" class="btn btn-dark text-white rounded-4">
-              Follow
-            </button>
-          </form>
+          <% if (userLike.followerList.includes(user._id)){%>
+            <form action="/<%=userLike.userName%>/unfollow" method="POST">
+              <button type="submit" class="btn btn-dark text-white rounded-4">
+                Unfollow
+              </button>
+            </form>
+          <% } else {%> 
+             <form action="/<%=userLike.userName%>/follow" method="POST">
+              <button type="submit" class="btn btn-dark text-white rounded-4">
+                Follow
+              </button>
+            </form>
+            <% } %> 
         </div>
       </div>
       <% } %>
