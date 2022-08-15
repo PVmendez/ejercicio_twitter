@@ -7,7 +7,17 @@ const userSchema = new Schema({
   lastName: String,
   userName: String,
   password: String,
-  email: String,
+  email: {
+    type: String,
+    validate: {
+      validator: async function (email) {
+        const car = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return car.test(email);
+      },
+      min: [2, "Username must have at least 2 characters"],
+      max: [20, "Username must have at least 20 characters"],
+    },
+  },
   password: String,
   description: String,
   profilePhoto: {

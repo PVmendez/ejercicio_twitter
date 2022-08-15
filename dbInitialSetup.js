@@ -6,6 +6,6 @@ module.exports = async () => {
   db.connection;
 
   // await userSeeder();
-  await tweetSeeder();
+  // await tweetSeeder();
   console.log("[Database] Se han insertado los datos");
 };

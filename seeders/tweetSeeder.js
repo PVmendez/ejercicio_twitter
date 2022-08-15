@@ -14,7 +14,6 @@ module.exports = async () => {
       new Tweet({
         content: faker.lorem.paragraph(),
         date: new Date(),
-        author: _.sample(users),
         likes: [],
       })
     );
@@ -26,16 +25,22 @@ module.exports = async () => {
 
   await Tweet.collection.insertMany(tweets);
 
-  for (const user of users) {
-    const tweets = await Tweet.find().limit(2);
-    for (const tweet of tweets) {
-      const userTweets = tweets.filter(
-        (t) => tweet._id.toString() != t._id.toString()
-      );
-      user.tweetList = userTweets;
-      await user.save();
-    }
+  // for (const user of users) {
+  //   for (const tweet of tweets) {
+  //     const userTweets = tweets.filter(
+  //       (t) => tweet._id.toString() != t._id.toString()
+  //     );
+  //     user.tweetList = userTweets;
+  //     await user.save();
+  //   }
+  // }
+
+  for (let i = 0; i < users.length; i++) {
+    users[i].tweetList.push(tweets[i]);
+    await Tweet.findOneAndUpdate({ _id: tweets[i]._id }, { author: users[i] });
+    await users[i].save();
   }
+
 
   console.log("[Database] Se corrió el seeder de Tweet.");
 };

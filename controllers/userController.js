@@ -11,20 +11,21 @@ async function show(req, res) {
     path: "tweetList",
     populate: {
       path: "author",
-    }
-  })
+    },
+  });
+
   return res.render("profilePage", { users, user });
 }
 
 async function follow(req, res) {
- await User.findOneAndUpdate(
-   { userName: req.params.userName },
-   {
-     $push: { followerList: req.user },
-   }
- );
+  await User.findOneAndUpdate(
+    { userName: req.params.userName },
+    {
+      $push: { followerList: req.user },
+    }
+  );
 
- const user = await User.findOne({ userName: req.params.userName });
+  const user = await User.findOne({ userName: req.params.userName });
   await User.findOneAndUpdate(
     { userName: req.user.userName },
     {
@@ -35,20 +36,20 @@ async function follow(req, res) {
 }
 
 async function unfollow(req, res) {
- await User.findOneAndUpdate(
-   { userName: req.params.userName },
-   {
-     $pull: { followerList: req.user._id },
-   }
- );
- 
-const user = await User.findOne({ userName: req.params.userName });
-await User.findOneAndUpdate(
-  { userName: req.user.userName },
-  {
-    $pull: { followingList: user._id },
-  }
-);
+  await User.findOneAndUpdate(
+    { userName: req.params.userName },
+    {
+      $pull: { followerList: req.user._id },
+    }
+  );
+
+  const user = await User.findOne({ userName: req.params.userName });
+  await User.findOneAndUpdate(
+    { userName: req.user.userName },
+    {
+      $pull: { followingList: user._id },
+    }
+  );
 
   res.redirect("back");
 }
