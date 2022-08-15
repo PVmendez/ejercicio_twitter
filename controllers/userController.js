@@ -6,15 +6,19 @@ async function index(req, res) {}
 
 // Display the specified resource.
 async function show(req, res) {
-	const users = await User.find().limit(3);
-	const user = await User.findOne({ userName: req.params.userName }).populate({
-		path: "tweetList",
-		populate: {
-			path: "author",
-		},
-	});
+  const suggestedUsers = await User.find({
+    _id: { $in: req.user.followingList },
+  });
+  
+const authUser = req.user;
+const user = await User.findOne({ userName: req.params.userName }).populate({
+  path: "tweetList",
+  populate: {
+    path: "author",
+  },
+});
 
-	return res.render("profilePage", { users, user });
+return res.render("profilePage", { suggestedUsers, user, authUser });
 }
 
 async function follow(req, res) {
@@ -55,12 +59,6 @@ async function unfollow(req, res) {
 	});
 
 	const authUser = req.user;
-	const user = await User.findOne({ userName: req.params.userName }).populate({
-		path: "tweetList",
-		populate: {
-			path: "author",
-		},
-	});
 
 	return res.render("profilePage", { suggestedUsers, user, authUser });
 }
