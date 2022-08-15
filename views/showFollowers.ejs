@@ -31,19 +31,23 @@
                     </div>
 
                     <div class="col-6 d-flex flex-column justify-content-center ms-3">
-                        <h2 class="fs-6 m-0"><a href="/<%=user.userName%>/following">Following</a></h2>
+                        <h2 class="fs-6 m-0"><a href="/<%=user._id%>/following">Following</a></h2>
                     </div>
                 </div>
                 <div class=" row p-3  border-top ">
+                    
+                    <!-- <%# console.log("FollowerUsers: \n" + followerUsers) %>  -->
                     <% for(const follower of followerUsers) {%>
+                    <%# console.log("Follower: \n" + follower) %> 
+
                         <div class="col-2">
-                            <a href="/<%= follower.userName %> ">
+                            <a href="/user/<%= follower.userName %> ">
                                 <img src="<%= follower.profilePhoto %> " class="img-fluid user-image" />
                             </a>
                         </div>
 
                         <div class="col-10 d-flex flex-column">
-                            <a href="/<%= follower.userName %>" class="fs-7  fw-bold text-black d-flex flex-column">
+                            <a href="/user/<%= follower.userName%>" class="fs-7  fw-bold text-black d-flex flex-column">
                                 <span class="hover-underline mb-0 p-0">
                                     <%= follower.firstName + " " + follower.lastName %>
                                 </span>
