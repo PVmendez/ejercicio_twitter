@@ -13,8 +13,11 @@ async function show(req, res) {
 			path: "author",
 		},
 	});
+  const suggestedUsers = await User.find({
+		_id: { $in: req.user.followingList },
+	});
 
-	return res.render("profilePage", { users, user });
+	return res.render("profilePage", {  suggestedUsers, users, user, authUser: req.user });
 }
 
 async function follow(req, res) {
@@ -51,18 +54,10 @@ async function unfollow(req, res) {
 		}
 	);
 	const suggestedUsers = await User.find({
-		_id: { $nin: req.user.followingList },
+		_id: { $in: req.user.followingList },
 	});
 
-	const authUser = req.user;
-	const user = await User.findOne({ userName: req.params.userName }).populate({
-		path: "tweetList",
-		populate: {
-			path: "author",
-		},
-	});
-
-	return res.render("profilePage", { suggestedUsers, user, authUser });
+	return res.render("profilePage", { suggestedUsers, user, authUser: req.user });
 }
 
 async function follow(req, res) {
