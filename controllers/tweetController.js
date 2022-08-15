@@ -10,7 +10,7 @@ async function show(req, res) {
       _id: { $nin: req.user.followingList },
     });
 
-  res.render("showTweet", { tweet, suggestedUsers });
+  res.render("showTweet", { tweet, suggestedUsers, user: req.user });
 }
 
 async function store(req, res) {
