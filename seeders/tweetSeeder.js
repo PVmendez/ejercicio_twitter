@@ -25,22 +25,11 @@ module.exports = async () => {
 
   await Tweet.collection.insertMany(tweets);
 
-  // for (const user of users) {
-  //   for (const tweet of tweets) {
-  //     const userTweets = tweets.filter(
-  //       (t) => tweet._id.toString() != t._id.toString()
-  //     );
-  //     user.tweetList = userTweets;
-  //     await user.save();
-  //   }
-  // }
-
   for (let i = 0; i < users.length; i++) {
     users[i].tweetList.push(tweets[i]);
-    await Tweet.findOneAndUpdate({ _id: tweets[i]._id }, { author: users[i] });
     await users[i].save();
+    await Tweet.findOneAndUpdate({ _id: tweets[i]._id }, { author: users[i] });
   }
-
 
   console.log("[Database] Se corrió el seeder de Tweet.");
 };

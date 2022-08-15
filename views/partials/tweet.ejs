@@ -1,3 +1,4 @@
+
 <article 
   class="tweet p-3 d-flex border-bottom"
   onclick="location.href = '/<%= tweet.author.userName %>/<%= tweet.id %>'"
@@ -13,7 +14,7 @@
             </span>
             <span class="fw-normal text-secondary ms-1">@<%= tweet.author.userName %> &middot; 1m</span>
           </a>
-          <% if (tweet.author._id.toString() === user._id.toString()) { %>
+          
            <div class="dropdown">
             <a onclick="event.stopPropagation();" data-bs-toggle="dropdown" aria-expanded="false"
               class="btn-soft rounded-circle d-inline-flex justify-content-center align-items-center p-1">
@@ -46,7 +47,6 @@
                 </form>
               </div>
           </div>
-          <% } %>
         </div>
         <p class="fs-7 my-0">
           <%= tweet.content %>
@@ -64,7 +64,7 @@
               </svg>
             </div>
             <span>
-              <%= Math.floor(Math.random()* 100 + 1) %>
+              <%#= Math.floor(Math.random()* 100 + 1) %>
             </span>
           </a>
           <!-- RETWEET -->
@@ -79,7 +79,7 @@
               </svg>
             </div>
             <span>
-              <%= Math.floor(Math.random()* 100 + 1) %>
+              <%#= Math.floor(Math.random()* 100 + 1) %>
             </span>
           </a>
           <!-- LIKES  -->
@@ -115,7 +115,7 @@
               </svg>
             </div>
             <span>
-              <%= Math.floor(Math.random()* 100 + 1) %>
+              <%#= Math.floor(Math.random()* 100 + 1) %>
             </span>
           </a>
         </div>

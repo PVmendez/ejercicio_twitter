@@ -30,14 +30,14 @@
                </div>
                <div class=" p-3 d-flex border-top flex-column">
                <div class="d-flex flex-shrink-0">
-                  <div class="me-2">
-                     <a href="/<%= tweet.author.userName %> " >
-                     <img src="<%= tweet.author.profilePhoto %> " alt="<%= tweet.author.userName + " Avatar" %> "
+                  <div class="me-2"> 
+                     <a href="/user/<%=  tweet.author.userName %> ">
+                     <img src="<%= tweet.author.profilePhoto %> "
                         class="img-fluid user-image" />
                      </a>
                   </div>
                   <div>
-                     <a href="/<%= tweet.author.userName %>" class="fs-7 mt-1 fw-bold text-black d-flex flex-column">
+                     <a href="/user/<%= tweet.author.userName %>" class="fs-7 mt-1 fw-bold text-black d-flex flex-column">
                      <span class="hover-underline mb-0 p-0">
                      <%= tweet.author.firstName + " " + tweet.author.lastName %>
                      </span>
@@ -80,7 +80,7 @@
                            </g>
                         </svg>
                      </div>
-                     <span><%= Math.floor(Math.random()* 100 + 1) %></span>
+                     <span><%#= Math.floor(Math.random()* 100 + 1) %></span>
                   </a
                      >
                   <!-- RETWEET -->
@@ -97,7 +97,7 @@
                            </g>
                         </svg>
                      </div>
-                     <span><%= Math.floor(Math.random()* 100 + 1) %></span>
+                     <span><%#= Math.floor(Math.random()* 100 + 1) %></span>
                   </a
                      >
                   <!-- LIKES  -->
@@ -134,7 +134,7 @@
                            </g>
                         </svg>
                      </div>
-                     <span><%= Math.floor(Math.random()* 100 + 1) %></span>
+                     <span><%#= Math.floor(Math.random()* 100 + 1) %></span>
                   </a>
                </div>
                </div>

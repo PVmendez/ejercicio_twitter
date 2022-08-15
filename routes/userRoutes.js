@@ -11,9 +11,10 @@ userRouter.post("/createTweet", tweetController.store);
 userRouter.get("/tweet/:tweetId/like", tweetController.like);
 userRouter.get("/tweet/:tweetId/dislike", tweetController.dislike);
 
-userRouter.get("/:userName", userController.show);
-userRouter.post("/:userName/follow", userController.follow);
-userRouter.post("/:userName/unfollow", userController.unfollow);
+userRouter.get("/user/:userName", userController.show);
+userRouter.get("/user", userController.search);
+userRouter.post("/:id/follow/", userController.follow);
+userRouter.post("/:id/unfollow/", userController.unfollow);
 
 userRouter.get("/:userName/followers", userController.showFollowers);
 userRouter.get("/:userName/following", userController.showFollowing);

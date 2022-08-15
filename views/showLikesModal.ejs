@@ -3,8 +3,7 @@
   id="showLikesModal"
   tabindex="-1"
   aria-labelledby="showLikesModal"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content rounded-4 border-0">
       <div class="modal-header modalLikes py-1">
@@ -19,27 +18,23 @@
         </div>
       </div>
       <!--  Contenido -->
-      <% for (userLike of tweet.likes) {%>
+      <% for (userLike of tweet.likes) { %>
       <div
         class="user p-3 d-flex align-items-center"
-        onclick="location.href ='/<%=userLike.userName %>/'"
-      >
+        onclick="location.href ='/user/<%=userLike.userName %>/'"
+>
         <div class="me-3 flex-shrink-0">
-          <img src="<%= userLike.profilePhoto %>" alt="<%= userLike.userName + " Avatar"
-          %> " class="img-fluid user-image" />
+          <img src="<%= userLike.profilePhoto %>" alt="<%= userLike.userName + "Avatar" %> " class="img-fluid user-image" />
         </div>
         <div class="flex-fill">
           <div>
-            <a
-              href="/<%= userLike.userdName %>"
-              class="fs-7 d-flex flex-column fw-bold m-0 text-black"
-            >
+            <a href="/<%= userLike.userName %>" class="fs-7 d-flex flex-column fw-bold m-0 text-black">
               <span class="hover-underline mb-0">
                 <%= userLike.firstName + " " + userLike.lastName %>
               </span>
               <span class="fw-normal text-secondary"
-                >@<%= userLike.userName %></span
-              >
+                >@<%= userLike.userName %>
+              </span>
             </a>
           </div>
           <div>
@@ -47,20 +42,22 @@
           </div>
         </div>
         <div>
-          <% if (userLike.followerList.includes(user._id)){%>
-            <form action="/<%=userLike.userName%>/unfollow" method="POST">
-              <button type="submit" class="btn btn-dark text-white rounded-4">
-                Unfollow
-              </button>
-            </form>
-          <% } else {%> 
-             <form action="/<%=userLike.userName%>/follow" method="POST">
-              <button type="submit" class="btn btn-dark text-white rounded-4">
-                Follow
-              </button>
-            </form>
-            <% } %> 
+        <% if (userLike._id.toString() != user._id.toString()) {%> 
+          <% if (userLike.followerList.includes(user._id)){ %>
+          <form action="/<%= userLike._id %>/unfollow" method="POST">
+            <button type="submit" class="btn btn-dark text-white rounded-4">
+              Unfollow
+            </button>
+          </form>
+          <% } else { %>
+          <form action="/<%= userLike._id %>/follow" method="POST">
+            <button type="submit" class="btn btn-dark text-white rounded-4">
+              Follow
+            </button>
+          </form>
+          <% } %>
         </div>
+        <% } %>
       </div>
       <% } %>
     </div>
