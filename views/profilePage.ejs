@@ -1,89 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <%- include("partials/meta") %>
+
+<head>
+   <%- include("partials/meta") %>
       <title>Home / Twitter</title>
-   </head>
-   <body>
-      <section class="d-flex justify-content-center container-fluid">
-         <!-- Sidebar -->
-         <div class="left-sidebar d-flex justify-content-end"><%- include("partials/sidebar") %></div>
-         <!-- Main -->
-         <main class="border p-0">
-            <section class="container-fluid p-0" style="min-height: 100vh">
-               <div class="border-bottom px-3 py-2 d-flex align-items-center sticky-top bg-white">
-                  <a
-                     href="/home"
-                     class="btn-gray rounded-circle p-2 d-flex justify-content-center align-items-center"
-                     >
-                     <svg viewBox="0 0 24 24">
-                        <g>
-                           <path
-                              d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"
-                              ></path>
-                        </g>
-                     </svg>
-                  </a>
-                  <div class="d-flex flex-column justify-content-center ms-3">
-                     <h2 class="fs-6 m-0 fw-bold"><%= user.firstName + " " + user.lastName %></h2>
-                     <span class="text-muted fs-8"><%#= user.tweets.length %> Tweets</span>
-                  </div>
+</head>
+
+<body>
+   <section class="d-flex justify-content-center container-fluid">
+      <!-- Sidebar -->
+      <div class="left-sidebar d-flex justify-content-end">
+         <%- include("partials/sidebar") %>
+      </div>
+      <!-- Main -->
+      <main class="border p-0">
+         <section class="container-fluid p-0" style="min-height: 100vh">
+            <div class="border-bottom px-3 py-2 d-flex align-items-center sticky-top bg-white">
+               <a href="/home" class="btn-gray rounded-circle p-2 d-flex justify-content-center align-items-center">
+                  <svg viewBox="0 0 24 24">
+                     <g>
+                        <path
+                           d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z">
+                        </path>
+                     </g>
+                  </svg>
+               </a>
+               <div class="d-flex flex-column justify-content-center ms-3">
+                  <h2 class="fs-6 m-0 fw-bold">
+                     <%= user.firstName + " " + user.lastName %>
+                  </h2>
+                     <span class="text-muted fs-8">
+                        <%= user.tweetList.length %> Tweets
+                     </span>
                </div>
-               <header class="bg-secondary" style="height: 200px"></header>
-               <div
-                  class="d-flex justify-content-between align-content-start p-3 position-relative border-bottom"
-                  id="profile-info"
-                  >
-                  <div class="d-flex flex-column justify-content-center">
-                     <div class="rounded-circle p-1 bg-white">
-                        <img
-                           src="<%= user.profilePhoto%>"
-                           alt="No avatar image"
-                           class="img-fluid rounded-circle profile-image"
-                           />
-                     </div>
-                     <h2 class="fw-bolder fs-6"><%= user.firstName + " " + user.lastName %></h2>
-                     <p class="text-muted m-0 fs-7">@<%= user.userName %></p>
-                     <p class="my-1 fs-7"><%= user.description %></p>
-                     <p class="">
-                        <span class="text-muted fs-7 me-2">
+            </div>
+            <header class="bg-secondary" style="height: 200px"></header>
+            <div class="d-flex justify-content-between align-content-start p-3 position-relative border-bottom"
+               id="profile-info">
+               <div class="d-flex flex-column justify-content-center">
+                  <div class="rounded-circle p-1 bg-white">
+                     <img src="<%= user.profilePhoto%>" alt="No avatar image"
+                        class="img-fluid rounded-circle profile-image" />
+                  </div>
+                  <h2 class="fw-bolder fs-6">
+                     <%= user.firstName + " " + user.lastName %>
+                  </h2>
+                  <p class="text-muted m-0 fs-7">@<%= user.userName %>
+                  </p>
+                  <p class="my-1 fs-7">
+                     <%= user.description %>
+                  </p>
+                  <p class="">
+                     <span class="text-muted fs-7 me-2">
                         <span class="text-black fw-bold" id="following-count">
-                        40<%#= user.following.length %>
+                           <%= user.followingList.length %>
                         </span>
                         Following
-                        </span>
-                        <span class="text-muted fs-7 me-2">
+                     </span>
+                     <span class="text-muted fs-7 me-2">
                         <span class="text-black fw-bold">
-                        25<%#= user.followers.length %>
-                        </span> 
-                        Followers
+                           <%= user.followerList.length %>
                         </span>
-                     </p>
-                  </div>
-                  <!-- <div>
-                     <% if (user.userName === user.userName) { %>
-                     <a
-                       href="#"
-                       class="px-3 py-2 fw-bold fs-7 btn-outline-secondary rounded-pill follow-edit-button"
-                       >Edit profile</a
-                     >
-                     <% } else { %> <a href="/follow/<%= user.id %>" class="unfollow px-3 py-2 fw-bold fs-7
-                     rounded-pill follow-edit-button <%#= user.following.includes(user.id) ? null : "d-none" %>"></a> 
-                     <a href="/follow/<%= user.id %>" class="follow px-3 py-2 fw-bold fs-7 rounded-pill
-                     follow-edit-button <%#= user.following.includes(user.id) ? "d-none" : null %>" >Follow</a>
-                      <% } %>
-                     </div> -->
+                        Followers
+                     </span>
+                  </p>
                </div>
-               <!-- Tweets -->
-               <!-- <div id="tweets-section">
-                  <#% if (user.tweets.length > 0) { %> <#% for( const tweet of user.tweets) { %> <#%-
-                  include("../partials/tweet", {tweet}) %> <#% } %> <#% } %>
-                  </div> -->
-            </section>
-         </main>
-         <!-- Right Column -->
-         <%- include("partials/rightSidebar.ejs") %>
-      </section>
-      <%- include("partials/scripts") %>
-   </body>
+               <div>
+                  <% if (user.userName===user.userName) { %>
+                     <a href="#"
+                        class="px-3 py-2 fw-bold fs-7 btn-outline-secondary rounded-pill follow-edit-button">Edit
+                        profile</a>
+                     <% } else { %> <a href="/follow/<%= user.id %>" class="unfollow px-3 py-2 fw-bold fs-7
+                     rounded-pill follow-edit-button <%#= user.following.includes(user.id) ? null : " d-none" %>"></a>
+                        <a href="/follow/<%= user.id %>" class="follow px-3 py-2 fw-bold fs-7 rounded-pill
+                     follow-edit-button <%= user.followingList.includes(user.id) ? " d-none" : null %>" >Follow</a>
+                        <% } %>
+               </div>
+            </div>
+            <!-- Tweets -->
+            <div id="tweets-section">
+               <% if (user.tweetList.length> 0) { %> 
+                  <% for( const tweet of user.tweetList) { %>
+                     <%- include("partials/tweetProfile", {tweet}) %>
+                  <% } %>
+               <% } %>
+            </div>
+         </section>
+      </main>
+      <!-- Right Column -->
+      <%- include("partials/rightSidebar.ejs") %>
+   </section>
+   <%- include("partials/scripts") %>
+</body>
+
 </html>

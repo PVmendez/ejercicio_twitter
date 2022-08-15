@@ -1,7 +1,8 @@
 const express = require("express");
 const userRouter = express.Router();
-const userController = require("../controllers/userController");
-const tweetController = require("../controllers/tweetController");
+const userController = require('../controllers/userController');
+const tweetController = require('../controllers/tweetController');
+const checkAuthentication = require("../middlewares/checkAuthentication");
 
 // Rutas del user:
 // ...

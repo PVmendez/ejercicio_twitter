@@ -44,12 +44,7 @@ module.exports = (app) => {
           { $or: [{ userName: username }, { email: email }] },
           function (err, user) {
             if (err) return done(err);
-
-            if (user) {
-              return done(null, false, {
-                message: "Username or email is already taken.",
-              });
-            } else {
+            if (!user) {
               const user = new User({
                 userName: req.body.username,
                 email: req.body.email,
@@ -62,6 +57,9 @@ module.exports = (app) => {
               user.save(user);
               return done(null, user);
             }
+            return done(null, false, {
+              message: "Username or email is already taken.",
+            });
           }
         );
       }
