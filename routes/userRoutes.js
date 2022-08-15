@@ -5,7 +5,6 @@ const tweetController = require("../controllers/tweetController");
 const checkAuthentication = require("../middlewares/checkAuthentication");
 
 // Rutas del user:
-// ...
 
 userRouter.post("/createTweet", tweetController.store);
 userRouter.get("/tweet/:tweetId/like", tweetController.like);

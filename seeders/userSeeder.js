@@ -22,28 +22,21 @@ module.exports = async () => {
   }
 
   for (const user of users){
+    // Te traes todos los usuarios menos en el que estas parado
     const filtrado = users.filter((u) => u != user)
+    // Agarras 5 random, que son los que ese usuario va A SEGUIR
     const seguidos = _.sampleSize(filtrado,5)
+    // Empieza a seguir a esos 5 random que agarraste arriba
     user.followingList = seguidos;
+
+    //Recorres esos 5 que empezo a seguir
     for (let i = 0; i < user.followingList.length; i++){
+      //Te paras en el que estas siguiendo, y te asignas a vos como nuevo follower
       user.followingList[i].followerList.push(user)
     }
   }
 
   User.collection.insertMany(users);
-
-  // const usersFollows = await User.find();
-  // const usersFollowers = await User.find().limit(5);
-
-  // for (const user of usersFollows) {
-  //   const followList = usersFollowers.filter(
-  //     (u) => user._id.toString() != u._id.toString()
-  //   );
-  //   user.followingList = followList;
-  //   user.followerList = followList;
-  //   await user.save();
-  // }
-
 
   console.log("[Database] Se corrió el seeder de User.");
 };

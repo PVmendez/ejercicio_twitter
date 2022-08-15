@@ -11,14 +11,22 @@ async function home(req, res) {
   const suggestedUsers = await User.find({
     _id: { $nin: req.user.followingList } });
 
+
+  //Te traes TODOS los tweets
   const allTweets = await Tweet.find().populate("author");
+
+  //Filtras los tweets para obtener solo los de tus followings o los tuyos
   const filteredTweets = allTweets
     .filter(
       (tweet) =>
+        //SI el autor del tweet esta incluido en tu lista de follows
         req.user.followingList.includes(tweet.author._id) ||
+        //Si soy yo el autor, tambien quiero verlo
         tweet.author.userName === req.user.userName
     )
-    .sort(function (a, b) {
+    .sort(
+      //Los ordena por fecha del mas nuevo al mas viejo
+      function (a, b) {
       return new Date(b.date) - new Date(a.date);
     });
 
