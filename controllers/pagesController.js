@@ -9,14 +9,12 @@ async function landing(req, res) {
 
 async function home(req, res) {
   const user = req.user;
-  console.log(req.user.followingList);
   let users = await User.find();
   const tweets = await Tweet.find({ author: { $in: req.user.followingList } })
     .sort("date")
     .populate({
       path: "author",
     });
-  console.log(tweets[0].author);
   res.render("home", { user, tweets, users });
 }
 
