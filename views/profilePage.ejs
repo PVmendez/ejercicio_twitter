@@ -29,9 +29,9 @@
                   <h2 class="fs-6 m-0 fw-bold">
                      <%= user.firstName + " " + user.lastName %>
                   </h2>
-                     <span class="text-muted fs-8">
-                        <%= user.tweetList.length %> Tweets
-                     </span>
+                  <span class="text-muted fs-8">
+                     <%= user.tweetList.length %> Tweets
+                  </span>
                </div>
             </div>
             <header class="bg-secondary" style="height: 200px"></header>
@@ -52,16 +52,20 @@
                   </p>
                   <p class="">
                      <span class="text-muted fs-7 me-2">
-                        <span class="text-black fw-bold" id="following-count">
-                           <%= user.followingList.length %>
-                        </span>
-                        Following
+                        <a href="<%=user.userName%>/following">
+                           <span class="text-black fw-bold" id="following-count">
+                              <%= user.followingList.length %>
+                           </span>
+                           Following
+                        </a>
                      </span>
                      <span class="text-muted fs-7 me-2">
-                        <span class="text-black fw-bold">
-                           <%= user.followerList.length %>
-                        </span>
-                        Followers
+                        <a href="<%=user.userName%>/followers">
+                           <span class="text-black fw-bold">
+                              <%= user.followerList.length %>
+                           </span>
+                           Followers
+                        </a>
                      </span>
                   </p>
                </div>
@@ -79,11 +83,11 @@
             </div>
             <!-- Tweets -->
             <div id="tweets-section">
-               <% if (user.tweetList.length> 0) { %> 
+               <% if (user.tweetList.length> 0) { %>
                   <% for( const tweet of user.tweetList) { %>
                      <%- include("partials/tweetProfile", {tweet}) %>
-                  <% } %>
-               <% } %>
+                        <% } %>
+                           <% } %>
             </div>
          </section>
       </main>
