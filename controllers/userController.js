@@ -53,7 +53,6 @@ async function unfollow(req, res) {
 	const suggestedUsers = await User.find({
 		_id: { $in: req.user.followingList },
 	});
->>>>>>> d107082727a4372b232031b20142057e56a43e75
 
 	return res.render("profilePage", { suggestedUsers, user, authUser: req.user });
 }
