@@ -16,8 +16,8 @@ userRouter.get("/user", userController.search);
 userRouter.post("/:id/follow/", userController.follow);
 userRouter.post("/:id/unfollow/", userController.unfollow);
 
-userRouter.get("/:id/followers", userController.showFollowers);
-userRouter.get("/:id/following", userController.showFollowing);
+userRouter.get("/user/:id/followers", userController.showFollowers);
+userRouter.get("/user/:id/following", userController.showFollowing);
 
 userRouter.get("/:userName/:tweetId", tweetController.show);
 userRouter.post("/:userName/:tweetId/delete", tweetController.destroy);

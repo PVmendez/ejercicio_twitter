@@ -54,7 +54,7 @@
                   </p>
                   <p class="">
                      <span class="text-muted fs-7 me-2">
-                        <a href="<%=user.userName%>/following">
+                        <a href="/user/<%= user.id %>/following">
                            <span class="text-black fw-bold" id="following-count">
                               <%= user.followingList.length %>
                            </span>
@@ -62,7 +62,7 @@
                         </a>
                      </span>
                      <span class="text-muted fs-7 me-2">
-                        <a href="<%=user.userName%>/followers">
+                        <a href="/user/<%= user.id %>/followers">
                            <span class="text-black fw-bold">
                               <%= user.followerList.length %>
                            </span>

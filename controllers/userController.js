@@ -107,7 +107,7 @@ async function showFollowers(req, res) {
       _id: { $nin: req.user.followingList },
     });
 
-	return res.render("showFollowers", { followerUsers, suggestedUsers });
+	return res.render("showFollowers", { followerUsers, suggestedUsers, user });
 }
 
 async function showFollowing(req, res) {
@@ -119,7 +119,7 @@ async function showFollowing(req, res) {
       _id: { $nin: req.user.followingList },
     });
 
-	return res.render("showFollowing", { followingUsers, suggestedUsers });
+	return res.render("showFollowing", { followingUsers, suggestedUsers, user });
 }
 
 async function search(req, res) {

@@ -14,8 +14,6 @@ async function show(req, res) {
 }
 
 async function store(req, res) {
-
-
   const tweet = new Tweet({
     content: req.body.tweetContent,
     date: new Date(),
